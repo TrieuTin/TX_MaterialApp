@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.App">
+    <Application.Resources>
+        <Color x:Key="RedColor">#FF6B6B</Color>
+        <Color x:Key="Error">#EB5757</Color>
+        <Color x:Key="GreenColor">#6BCB77</Color>
+        <Color x:Key="Success">#21d180</Color>
+        <Color x:Key="BlueBacklight">#2E4F4F</Color>
+        <Color x:Key="BlueBackDark">#2C3333</Color>
+        <Color x:Key="BlueGray">#CBE4DE</Color>
+        <Color x:Key="Gray">#D8D8D8</Color>
+        <Color x:Key="Blue">#00235B</Color>
+
+        <Color x:Key="YellowColor">#FFD93D</Color>
+        <Color x:Key="Warning">#FFB000</Color>
+        <Color x:Key="PrimaryColor">#4D96FF</Color>
+        <Color x:Key="Notification">#5a7dfd</Color>
+        <Color x:Key="BlueSea">#0b80ec</Color>
+        <Color x:Key="Question">#2c8a9d</Color>
+        <Color x:Key="Organ">#d87700</Color>
+        <Color x:Key="Purple">#614BC3</Color>
+    </Application.Resources>
+</Application>

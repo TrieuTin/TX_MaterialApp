@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Popups.PopupShowRequest"
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           IsLightDismissEnabled="True"
+           Size="450,480">
+
+    <Grid RowDefinitions="50,*" RowSpacing="1">
+        <Frame BackgroundColor="{StaticResource Organ}" Margin="-5">
+            <Label Padding="-10" Text="Request" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </Frame>
+        <ScrollView Grid.Row="1">
+            
+            <StackLayout x:Name="MainGrid" >
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</xct:Popup>

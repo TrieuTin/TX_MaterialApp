@@ -1,0 +1,58 @@
+﻿
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="MaterialTracking.Popups.PopupChoise"
+           xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+           IsLightDismissEnabled="True"
+           Size="650,450">
+    <Grid Margin="5, 20,5,0" 
+          
+          RowDefinitions="75,*"
+          ColumnDefinitions="180,*"
+          
+          HeightRequest="500" 
+          WidthRequest="550" 
+          HorizontalOptions="Center" 
+          VerticalOptions="Center">
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill" ColumnDefinitions="*,1.5*" RowDefinitions="*" BackgroundColor="{Binding ColorNotify}">
+
+            <Frame  BackgroundColor="{x:StaticResource Notification}">
+                <Label x:Name="lbl_Title"
+                       Text="{Binding LabelNotification}" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Start" 
+                       VerticalOptions="Center" 
+                       FontSize="Large" 
+                       TextColor="#EBE4D1" />
+            </Frame>
+            <SearchBar x:Name="searchBar" Grid.Column="1"
+                   Placeholder="Search" 
+                   PlaceholderColor="Gray"
+                   BackgroundColor="#0138ff"
+                                           
+                   TextColor="White" 
+              
+                   TextChanged="searchBar_TextChanged"
+                   />
+        </Grid>
+
+        <StackLayout  Grid.Row="1" 
+                    Grid.Column="1" x:Name="S_Content">
+            
+      
+        </StackLayout>
+
+        <lottie:AnimationView   Grid.Column="0" Grid.Row="1"
+            Animation="ChoiseList.json"  
+            RepeatMode="Infinite"  
+            HeightRequest="280" 
+                                WidthRequest="280" 
+           
+            HorizontalOptions="CenterAndExpand" 
+            VerticalOptions="CenterAndExpand"
+                                Margin="0"/>
+    </Grid>
+
+</xct:Popup>

@@ -1,0 +1,45 @@
+﻿
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.PopupNotifiaction"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" IsLightDismissEnabled="False"
+           Size="650,350">
+    <Grid Margin="10, 20,10,0" ColumnDefinitions="120,*" RowDefinitions="75,*,80" HeightRequest="500" WidthRequest="550" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <Frame BackgroundColor="{Binding ColorNotify}" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Label x:Name="lbl_Title" 
+                   Text="{Binding LabelNotification}"
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Start" 
+                   VerticalOptions="Center" 
+                   FontSize="Large" 
+                   TextColor="#EBE4D1" />
+        </Frame>
+
+        <Label  Grid.Row="1" Grid.Column="1" x:Name="lbl_Content" Text="{Binding LabelContent}" 
+                HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="#26577C" />
+
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ButtonName}" 
+                
+                TextColor="White" 
+                CornerRadius="20" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"  
+                Margin="0,0,0,5"
+                Padding="0"
+                WidthRequest="400"
+                FontSize="20"
+                BackgroundColor="{Binding ColorNotify}"
+                Command="{Binding TapCommand}"/>
+        
+        <lottie:AnimationView   Grid.Column="0" Grid.Row="1"
+            Animation="{Binding Icon}"  
+            RepeatMode="Infinite"  
+            HeightRequest="100" 
+            WidthRequest="100" 
+            HorizontalOptions="CenterAndExpand" 
+            VerticalOptions="CenterAndExpand"/>
+       
+    </Grid>
+</xct:Popup>

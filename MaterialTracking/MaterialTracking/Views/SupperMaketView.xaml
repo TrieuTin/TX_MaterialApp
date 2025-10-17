@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.SupperMaketView"
+                xmlns:viewModels="clr-namespace:MaterialTracking.ViewModels"
+             Title="SuperMaket" NavigationPage.HasBackButton="False">
+    <!--<ContentPage.BindingContext>
+        <viewModels:SupermarketViewModel  />
+    </ContentPage.BindingContext>-->
+    <StackLayout>
+        <!--SupperMarketCommand-->
+        <StackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left" Command="{Binding Path=CmdScan}"/>
+            <SwipeGestureRecognizer Direction="Right" Command="{Binding Path=BarCode_Available}"/> 
+        </StackLayout.GestureRecognizers>
+      
+        <Grid RowSpacing="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" BackgroundColor="{StaticResource Key=BlueBacklight}" HeightRequest="70" Margin="0" Padding="0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="30">
+                    <SearchBar Placeholder="Search" SearchButtonPressed="SearchBar_SearchButtonPressed"/>
+                    <Picker x:Name="picker_Building" Title="Location" WidthRequest="200" 
+                            ItemsSource="{Binding Location}"
+                            SelectedItem="{Binding SelectBuilding}" 
+                            FontSize="Large" SelectedIndexChanged="picker_Building_SelectedIndexChanged"/>
+                    <Picker x:Name="picker_Lean" FontSize="Large" SelectedIndexChanged="picker_Lean_SelectedIndexChanged" WidthRequest="200" 
+                            Title="Lean"
+                           />
+                    <DatePicker x:Name="picker_Date"  DateSelected="picker_Date_DateSelected" FontSize="Large"/>
+                </StackLayout>
+            </Frame>
+            <!--Title DataGrid-->
+            <Frame Grid.Row="1" BackgroundColor="{StaticResource Key=Gray}" HeightRequest="70" >
+                <Grid Padding="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Date" Grid.Column="0" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Text="RY" Grid.Column="1" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Art" Grid.Column="2" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Model" Grid.Column="3" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Qty" Grid.Column="4" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Line"  Grid.Column="5" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="TotalComp" Grid.Column="6" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="OnGoing" Grid.Column="7" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Done" Grid.Column="8" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Delivered" Grid.Column="9" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="Delay" Grid.Column="10" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="ProDate" Grid.Column="11" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+
+            <ListView x:Name="lstVw" Grid.Row="2"   SelectionMode="Single" VerticalOptions="FillAndExpand" HasUnevenRows="True" >
+                <!--ItemSelected="ListView_ItemSelected" ItemTapped="ListView_ItemTapped"-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems >
+                                        <SwipeItem Text="Delivery" BackgroundColor="{StaticResource BlueBacklight}" 
+                                                   Invoked="Delivery_Invoked"/>
+                                        <SwipeItem Text="Inventory" BackgroundColor="{StaticResource BlueBacklight}" 
+                                                 Invoked="Inventory_Invoked"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <!--<SwipeView.LeftItems>
+                                        <SwipeItems >
+                                            <SwipeItem Text="OnGoing" BackgroundColor="{StaticResource YellowColor}" 
+                                                 />
+                                            <SwipeItem Text="Done" BackgroundColor="{StaticResource PrimaryColor}" 
+                                                   />
+                                            <SwipeItem Text="Delived" BackgroundColor="{StaticResource GreenColor}" 
+                                                   />
+                                            <SwipeItem Text="Delay" BackgroundColor="{StaticResource RedColor}" 
+                                                   />
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>-->
+
+                                <Frame HasShadow="True" HeightRequest="70">
+
+                                    <Grid Padding="0,0,0,0">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <!--<Label Text="{Binding Machine}" Grid.Row="0" Grid.Column="0" />-->
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding UserDate}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="0"  FontSize="20"/>
+
+                                        <Label Text="{Binding RY}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="1" FontSize="20"/>
+
+                                        <Label Text="{Binding Art}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="2" FontSize="20"/>
+
+                                        <Label Text="{Binding ModelName}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="3" FontSize="20"/>
+
+                                        <Label Text="{Binding Qty}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="4" FontSize="20"/>
+
+                                        <Label Text="{Binding Line}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="5" FontSize="20"/>
+
+                                        <Label Text="{Binding TotalComp}" Grid.Row="0" Grid.Column="6" VerticalOptions="FillAndExpand" TextColor="{StaticResource BlueBackDark}"  FontSize="20"/>
+
+                                        <Label Text="{Binding OnGoing}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="7" TextColor="{StaticResource BlueBackDark}"  FontSize="20"/>
+
+                                        <Label Text="{Binding Done}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="8" FontSize="20"/>
+
+                                        <Label Text="{Binding Delivered}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="9" FontSize="20"/>
+
+                                        <Label Text="{Binding Delay}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="10" FontSize="20"/>
+
+                                        <Label Text="{Binding ProDate}" TextColor="{StaticResource BlueBackDark}" Grid.Row="0" Grid.Column="11" FontSize="20"/>
+
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
+    </StackLayout>
+</ContentPage>

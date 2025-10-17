@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pageviews="clr-namespace:MaterialTracking.PageViews" 
+           
+             x:Class="MaterialTracking.PageViews.InventoryDetail_PageView" 
+             NavigationPage.HasNavigationBar="False">
+   
+    <Grid RowDefinitions="80,50,70,*" RowSpacing="1">
+        
+        <Frame HeightRequest="30" BackgroundColor="{StaticResource Purple}">
+            <Label Text="AUTO CUTTING INVENTORY DETAIL" TextColor="White" FontSize="28" FontAttributes="Bold" 
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" Grid.Row="0">
+                
+            </Label>
+        </Frame>
+        
+        <Grid ColumnDefinitions="1.5*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*"  
+              BackgroundColor="#36304a"
+              HorizontalOptions="Fill" VerticalOptions="Fill" HeightRequest="50" Grid.Row="1">
+
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="Subtitle" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="FontAttributes" Value="Bold" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                    <Setter Property="VerticalTextAlignment" Value="Center" />
+                </Style>
+            </Grid.Resources>
+
+            <Label Text="RY"/>
+
+            <Frame BackgroundColor="White" Grid.Column="1"/>
+
+            <Label Text="Art" Grid.Column="2"/>
+
+            <Frame BackgroundColor="White" Grid.Column="3"/>
+
+            <Label Text="Model Name" Grid.Column="4"/>
+
+            <Frame BackgroundColor="White" Grid.Column="5"/>
+
+            <Label Text="Line" Grid.Column="6"/>
+
+            <Frame BackgroundColor="White" Grid.Column="7"/>
+
+            <Label Text="ProDate" Grid.Column="8"/>
+
+            <Frame BackgroundColor="White" Grid.Column="9"/>
+
+            <Label Text="Target" Grid.Column="10"/>
+
+            <Frame BackgroundColor="White" Grid.Column="11"/>
+
+            <Label Text="Actual" Grid.Column="12"/>
+
+            <Frame BackgroundColor="White" Grid.Column="13"/>
+
+            <Label Text="Total Comp" Grid.Column="14"/>
+
+            <Frame BackgroundColor="White" Grid.Column="15"/>
+
+            <Label Text="On Going" Grid.Column="16"/>
+
+            <Frame BackgroundColor="White" Grid.Column="17"/>
+
+            <Label Text="Done" Grid.Column="18"/>
+
+            <Frame BackgroundColor="White" Grid.Column="19"/>
+
+            <Label Text="Delivered" Grid.Column="20"/>
+
+            <Frame BackgroundColor="White" Grid.Column="21"/>
+
+            <Label Text="Delayed" Grid.Column="22"/>
+
+            <!--<Frame BackgroundColor="White" Grid.Column="23"/>
+
+            <Label Text="Action" Grid.Column="24"/>-->
+
+        </Grid>
+
+        <ListView ItemsSource="{Binding Data}" 
+                  Margin="1,1,0,1" 
+                  x:Name="LvData"
+                  BackgroundColor="{StaticResource BlueGray}"
+                  RowHeight="70"
+                  Grid.Row="2"
+                  ItemAppearing="LvData_ItemAppearing" >
+
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="1.5*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*,1,*"  
+                              BackgroundColor="{StaticResource  BlueGray}"
+                              HorizontalOptions="Fill" 
+                              VerticalOptions="Fill" 
+                              HeightRequest="50">
+
+                            <Grid.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="Small" />
+                                    <Setter Property="TextColor" Value="{StaticResource BlueBackDark}" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                    <Setter Property="VerticalTextAlignment" Value="Center" />
+                                </Style>
+                            </Grid.Resources>
+
+                            <Label Text="{Binding  ZLBH}" Margin="-5,0"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="1"/>
+
+                            <Label Text="{Binding Art}" Grid.Column="2"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="3"/>
+
+                            <Label Text="{Binding ModelName}" Grid.Column="4"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="5"/>
+
+                            <Label Text="{Binding Line}" Grid.Column="6"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="7"/>
+
+                            <Label Text="{Binding ProDate}" Grid.Column="8"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="9"/>
+
+                            <Label Text="{Binding Target}" Grid.Column="10"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="11"/>
+
+                            <Label Text="{Binding Actual}" Grid.Column="12"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="13"/>
+
+                            <Label Text="{Binding Components}" Grid.Column="14"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="15"/>
+
+                            <Label Text="{Binding OnGoing}" Grid.Column="16"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="17"/>
+
+                            <Label Text="{Binding Done}" Grid.Column="18"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="19"/>
+
+                            <Label Text="{Binding Delivered}" Grid.Column="20"/>
+
+                            <Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="21"/>
+
+                            <Label Text="{Binding Delayed}" Grid.Column="22"/>
+
+                            <!--<Frame BackgroundColor="{StaticResource BlueBackDark}" Grid.Column="23"/>
+
+                            <Label Text="Action" Grid.Column="24"/>-->
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+       
+
+        <ScrollView Grid.Row="3"  Orientation="Both" >
+            <StackLayout Margin="5,0,0,0" x:Name="Stack_Detail" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

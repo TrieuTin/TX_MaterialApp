@@ -1,0 +1,46 @@
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
+<xct:Popup  xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+            xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+            x:Class="MaterialTracking.Popups.PopupSearch" 
+            IsLightDismissEnabled="False"
+           Size="550,150">
+    
+    
+    <Grid ColumnDefinitions="100,*,150" RowDefinitions="60,*" BackgroundColor="{StaticResource Notification}">
+
+        <Frame BackgroundColor="{StaticResource Purple}" HasShadow="True" Grid.ColumnSpan="3" Padding="0" Margin="0">
+            <Label Text="{Binding Title}" FontSize="23" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" Margin="10,0,0,0"/>
+        </Frame>
+        
+        <Entry x:Name="txtSearch" TextColor="WhiteSmoke"
+               
+               Grid.Column="1" Grid.Row="1" Placeholder="{Binding Holder}" 
+               PlaceholderColor="NavajoWhite"
+               FontSize="20"
+               HeightRequest="50" 
+               Keyboard="Numeric"     
+               Completed="txtSearch_Completed"
+               />
+               <!--ReturnCommandParameter="{Binding Source={x:Reference txtSearch}, Path=Text}"-->
+
+        <Button Text="Search" x:Name="btn_ok" FontSize="20"
+                AutomationId="{Binding Source={x:Reference txtSearch}, Path=Text}" 
+                Grid.Column="2" Grid.Row="1" Command="{Binding TapCommand}"
+                CommandParameter="{x:Reference btn_ok}"
+                HeightRequest="50" BackgroundColor="{StaticResource PrimaryColor}"
+                TextColor="White"
+                Margin="5">
+          
+        </Button>
+
+        <lottie:AnimationView   Grid.Column="0" Grid.Row="1"
+            Animation="Find.json"  
+            RepeatMode="Infinite"  
+            HeightRequest="80" 
+            WidthRequest="100" 
+            HorizontalOptions="Fill" 
+            VerticalOptions="CenterAndExpand"/>
+    </Grid>
+    
+</xct:Popup>

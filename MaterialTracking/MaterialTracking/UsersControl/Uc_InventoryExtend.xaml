@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.UsersControl.Uc_InventoryExtend"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+      >
+   
+    <xct:Expander
+        ExpandAnimationEasing="{x:Static Easing.SinIn}" 
+        CollapseAnimationEasing="{x:Static Easing.SinInOut}" 
+        BackgroundColor="White"
+        x:Name="expParent" IsExpanded="True">
+        <xct:Expander.Header>
+            <Grid Padding="0,2,0,0" >
+                
+                <Frame BackgroundColor="#213555" HasShadow="True"/>
+
+                <Grid ColumnDefinitions="1.5*,1,1.*,1,*,1,*,1,*,1,4*,1,2*,1,2*,1,2*,1,*,1,*" >
+                   
+                    <Label  x:Name="lbl_Ry" 
+                            FontAttributes="Bold"
+                            FontSize="Medium" />
+
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="1" WidthRequest="1"/>
+
+                    <Label x:Name="lbl_art"
+                           Padding=" 7,0"                          
+                           FontAttributes="Bold"
+                           FontSize="Medium" 
+                          
+                           Grid.Column="2"/>
+
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="3" WidthRequest="1"/>
+                    
+                    <Label Padding=" 7,0"
+                           x:Name="lbl_modelname"
+                           FontAttributes="Bold"
+                           FontSize="Medium" 
+                           Grid.Column="4"/>
+
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="5" WidthRequest="1"/>
+                    
+                    <Label x:Name="lbl_qty"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium"                               
+                            Grid.Column="6"/>
+
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="7" WidthRequest="1"/>
+
+                    <Label Padding=" 7,0"
+                          x:Name="lbl_line"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                           Grid.Column="8"/>
+                    
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="9" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_TotalComp"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                             
+                           Grid.Column="10"/>
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="11" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_going"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                            
+                           Grid.Column="12"/>
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="13" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_Done"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                            
+                           Grid.Column="14"/>
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="15" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_Delivered"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                              
+                           Grid.Column="16"/>
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="17" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_delay"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                              
+                           Grid.Column="18"/>
+                    <BoxView BackgroundColor="{StaticResource Key=Gray}" Grid.Column="19" WidthRequest="1"/>
+
+                    <Label 
+                               x:Name="lbl_date"
+                               Padding=" 7,0"                          
+                            FontAttributes="Bold"
+                            FontSize="Medium" 
+                              
+                           Grid.Column="20"/>
+
+                </Grid>
+            </Grid>
+
+
+        </xct:Expander.Header>
+
+        <StackLayout  x:Name="subContent" >
+            
+            <xct:Expander ExpandAnimationEasing="{x:Static Easing.BounceOut}" 
+                          CollapseAnimationEasing="{x:Static Easing.BounceIn}" 
+                          BackgroundColor="White"
+                          x:Name="exp_Detail"  Direction="Down"
+                          FlowDirection="MatchParent"
+                          
+                          >
+                
+                <xct:Expander.Header>
+                    <Grid Padding="0,2,0,0" >
+
+                        <!--<Frame BackgroundColor="#93B1A6" HasShadow="True"/>-->
+                        <Grid x:Name="Title2" ColumnSpacing="3">
+                            
+                        </Grid>
+                    </Grid>
+                </xct:Expander.Header>
+                
+                <Grid x:Name="subContent2" RowSpacing="3" ColumnSpacing="3">
+
+                </Grid>
+            </xct:Expander>
+            
+        </StackLayout>
+
+
+    </xct:Expander>
+</Grid>

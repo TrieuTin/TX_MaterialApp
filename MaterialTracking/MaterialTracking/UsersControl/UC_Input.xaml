@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.UsersControl.UC_Input" 
+             xmlns:sysFont="clr-namespace:SysFont"
+      
+      HeightRequest="150"
+      HorizontalOptions="Center"
+      VerticalOptions="Fill"
+      BackgroundColor="{Binding BColor}"
+      Padding="3" 
+      Margin="2"
+      IsEnabled="{Binding SetOnOFF}"
+       xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+      xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+      AutomationId="{Binding Prono}" ColumnSpacing="0" 
+      RowSpacing="0" 
+      >
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Frame  BackgroundColor="#b4c7e7" >
+       
+
+    </Frame>
+
+    <Picker x:Name="Wheelpicker" 
+                                 
+            ItemsSource="{Binding Items }"
+            
+            SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+            
+            HorizontalOptions="Fill"
+
+            VerticalOptions="Fill"
+
+            VerticalTextAlignment="Center"
+
+            HorizontalTextAlignment="Center"
+
+            BackgroundColor="#b4c7e7" TextColor="Black"
+
+            Grid.ColumnSpan="2"
+                
+            SelectedIndexChanged="Wheelpicker_SelectedIndexChanged"
+            
+            FontSize="24"/>
+
+    <Frame  Grid.Row="1" Grid.Column="1"
+             BackgroundColor="#a6a6a6" Padding="0">
+
+        <Label  HorizontalTextAlignment="Center"                         
+                Padding="0" 
+                Margin="0"                         
+                    FontAttributes="Bold" 
+                FontSize="24"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                Text="{Binding TotalQty}"
+                Grid.Row="1" Grid.Column="1"
+            TextColor="Black">
+        <!--<Label.Text>
+                <MultiBinding StringFormat="({0})/{1}">
+                    <Binding Path="Qtyed" />
+                    <Binding Path="TotalQty"  />
+                </MultiBinding>-->
+        <!--<Binding Path="Qtyed"/>-->
+        <!--<Binding Path="Qtyed" StringFormat="\{0\}"></Binding>-->
+        <!--</Label.Text>-->
+
+
+        </Label>
+    </Frame>
+  
+    <Frame Grid.Row="1" 
+            Grid.Column="0" BackgroundColor="White" Padding="-1" Margin="0">
+
+        <Label  HorizontalTextAlignment="Center"                         
+                Padding="0" 
+                Margin="0"                     
+                FontAttributes="Bold" 
+                FontSize="24"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                Text="{Binding Qtyed}"
+                Grid.Row="1" Grid.Column="0"  TextColor="Black">
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ModifyQtyedCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Frame>
+
+   
+
+    <Grid Grid.Row="2" Grid.ColumnSpan="2" 
+          HorizontalOptions="CenterAndExpand" 
+          VerticalOptions="CenterAndExpand" 
+          ColumnDefinitions="*,*" Padding="0">
+            <Button Text="{Static sysFont:Brands.Arrow_Alt_Circle_Up}" 
+                    FontFamily="aws900"                    
+                x:Name="btn_Plus" 
+                Clicked="btn_Plus_Clicked"
+                BackgroundColor="{StaticResource GreenColor}"
+                
+                Command="{Binding PlusCommand}"
+                CommandParameter="{Binding Source={x:Reference btn_Plus}}"
+                FontSize="Large" 
+                IsEnabled="{Binding SetOnOFF}"                                
+                TextColor="White"
+                     
+                Margin="0"
+                Padding="0"
+                 xct:TouchEffect.LongPressCommand="{Binding  LongPress}"
+                 xct:TouchEffect.LongPressCommandParameter="{Binding Source={x:Reference btn_Plus}}"
+                 xct:TouchEffect.LongPressDuration="500"/>
+
+            <Button  Text="{Static sysFont:Brands.Arrow_Alt_Circle_Down}" Grid.Column="1"
+                     FontFamily="aws900"
+                 x:Name="btn_Minus" 
+                 BackgroundColor="{StaticResource Error}"
+                 Margin="0" Padding="0"
+                 Command="{Binding MinusCommand}" 
+                 CommandParameter="{Binding Source={x:Reference btn_Minus}}"
+                 FontSize="Large" Clicked="btn_Minus_Clicked" 
+                 IsEnabled="{Binding SetOnOFF}" 
+                 TextColor="White"
+                  
+                 xct:TouchEffect.LongPressCommand="{Binding  LongPress}"
+                 xct:TouchEffect.LongPressCommandParameter="{Binding Source={x:Reference btn_Minus}}"
+                 xct:TouchEffect.LongPressDuration="500"/>
+        </Grid>
+
+    <!--{Binding Source={x:Reference btn_Minus}}-->
+</Grid> 

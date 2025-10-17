@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.AutoCuttingScanView" 
+             Title="Auto Cutting Job Ticket Tracking"       NavigationPage.HasNavigationBar="False"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:color="clr-namespace:MaterialTracking.Class"
+             >
+    
+    <StackLayout>
+        
+        <Grid RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding RowHeight}" /> 
+                
+                <RowDefinition Height="20"/> 
+                <RowDefinition Height="*"/> 
+                    
+            </Grid.RowDefinitions>
+            <Grid IsVisible="{Binding IsBusy}" Grid.Row="2" x:Name="GridWait" BackgroundColor="{StaticResource PrimaryColor}" Opacity=".4">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            </Grid>
+            <!--first Content-->
+            <Frame BackgroundColor="{StaticResource BlueGray} " Padding="10,0" x:Name="FrameInfo">
+                
+                <Grid Padding="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="100"/>
+                        
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label  Text="{Binding BarCode}" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                   <!--Dang Giay-->
+                    <Label  Text="{Binding Xieming}" Grid.Row="1" Grid.Column="0" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                    
+                    <Label  Text="{Binding Article}" Grid.Row="2" Grid.Column="0" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                    
+                    <Label  Text="{Binding Shift}" Grid.Row="3" Grid.Column="0" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                   
+                    <Label  Text="{Binding WorkDate}" Grid.Row="4" Grid.Column="0" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                    <Label  Text="{Binding CutDie}" Grid.Row="0" Grid.Column="1" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                    
+                    <Label  Text="{Binding DMQty}" Grid.Row="1" Grid.Column="1" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                    
+                    <Label Text="{Binding MachineNo}" Grid.Row="2" Grid.Column="1" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                    
+                    <Label  Text="{Binding User}" Grid.Row="3" Grid.Column="1" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                   
+                    <ScrollView Orientation="Vertical" Grid.RowSpan="2" Grid.Row="0" Grid.Column="2">
+                        <Label Text="{Binding YWPM}"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                        
+                    </ScrollView>
+                    
+                    <Label  Text="{Binding CLBH}" Grid.Row="2" Grid.Column="2" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                   
+                    <Label Text="{Binding Layer}" Grid.Row="3" Grid.Column="2" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                   
+                    <Label  Text="{Binding Lean}" Grid.Row="4" Grid.Column="2" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                    <Button x:Name="btn_Confirm" 
+                            Grid.Row="4" Grid.RowSpan="3" 
+                            Grid.Column="3" 
+                            Text="Confirm"
+                            HeightRequest="50" 
+                            HorizontalOptions="StartAndExpand" 
+                            Clicked="Button_Clicked" />
+
+                </Grid>
+            </Frame>
+
+        
+
+            <lottie:AnimationView   Grid.Row="1"
+            Animation="Expand.json"  
+            RepeatMode="Infinite"  
+            HeightRequest="20" 
+            WidthRequest="20" 
+            HorizontalOptions="Fill" 
+            VerticalOptions="Fill"
+                                    BackgroundColor="Wheat"
+                                    Command="{Binding CollapsedCmd}"/>
+            
+            <!--Create Data Auto-->
+
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Spacing="1">
+
+                <Grid x:Name="GridCoDinh" 
+                      RowDefinitions="45,*" 
+                      ColumnDefinitions="100,100" Margin="0,0" 
+                      ColumnSpacing="1" RowSpacing="1" 
+                      Padding="0,0,0,0" 
+                      HorizontalOptions="StartAndExpand" 
+                              HeightRequest="65" >
+                    <Label x:Name="Column_Comp" Text="Comp" TextColor="White" BackgroundColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
+                    <Label x:Name="Column_RY" Text="RY" TextColor="White" BackgroundColor="Black" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
+                   
+                    <ScrollView Orientation="Vertical" 
+                                Grid.Row="1" 
+                                x:Name="ScrollCoDinh" 
+                                Grid.ColumnSpan="2">
+
+                        <Grid x:Name="GridCompRY" Margin="0" Padding="0" ColumnSpacing="1" RowSpacing="1" 
+                                  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" ColumnDefinitions="100,100"/>
+                    </ScrollView>
+                </Grid>
+
+                <ScrollView Orientation="Horizontal"  >
+                        <Grid Margin="0,0,0,0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Frame Margin="0,0,0,0"  Padding="0"  BackgroundColor="{StaticResource BlueBackDark}" HeightRequest="65">
+                                
+                                <Grid Margin="0,0" ColumnSpacing="1" RowSpacing="1" Padding="0,0,0,0" HorizontalOptions="StartAndExpand" 
+                              x:Name="GridTitle"  HeightRequest="65" >
+
+
+
+
+                                </Grid>
+                            </Frame>
+
+                            <ScrollView Orientation="Vertical" Grid.Row="1"  
+                                        Margin="0" Padding="0,0,0,5"
+                                        x:Name="ScrollHor" >
+                           
+                            <StackLayout Padding="0" Margin="0" Spacing="1">
+                                    <Grid Margin="0" Padding="0" x:Name="GridData" ColumnSpacing="1" RowSpacing="1" 
+                                  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Black">
+
+
+
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </ScrollView>
+                        </Grid>
+                    </ScrollView>
+               
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+        
+</ContentPage>

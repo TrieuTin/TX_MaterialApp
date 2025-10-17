@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.ShowAutoJobTicket"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             Title="{Binding Title}">
+    <Grid>
+        <dg:DataGrid FontSize="18"
+                    ItemsSource="{Binding Data}" 
+                     
+                     SelectionEnabled="True" 
+                     
+                     SelectedItem="{Binding Selected}" 
+                                          
+                     ItemSelected="DataGrid_ItemSelected"
+                     
+                     RowHeight="60" HeaderHeight="50"
+                     
+                     BorderColor="#CCCCCC" 
+                     
+                     HeaderBackground="#EF5B0C" 
+                     
+                     PullToRefreshCommand="{Binding RefreshCommand}"
+                     
+                     IsRefreshing="{Binding IsBusy}"                                           
+                     
+                     ActiveRowColor="#BEE9E8"
+                     
+                     x:Name="Dgv">
+
+
+            <dg:DataGrid.Columns>
+
+                <!--<dg:DataGridColumn PropertyName="ProNo" Width="0.75*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="ProNo" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>-->
+
+
+                <dg:DataGridColumn PropertyName="Ry" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Ry" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="Line" Width="0.3*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Line" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="Art" Width="0.3*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Art" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="ModelName" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="ModelName" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="CLBH" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="CLBH" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="Component" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Component" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+             
+
+                <dg:DataGridColumn PropertyName="Instock" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Instock" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="ProductionDate" Width="0.4*" >
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Production Date" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+                
+                
+
+            </dg:DataGrid.Columns>
+
+            <dg:DataGrid.RowsBackgroundColorPalette>
+                <dg:PaletteCollection>
+                    <Color>
+                        #D9F8C4
+                    </Color>
+                    <Color>#F9F9C5</Color>
+                </dg:PaletteCollection>
+            </dg:DataGrid.RowsBackgroundColorPalette>
+
+        </dg:DataGrid>
+
+    </Grid>
+</ContentPage>

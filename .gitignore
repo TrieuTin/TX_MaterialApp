@@ -1,0 +1,130 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Build Folders
+[Bb]in/
+[Oo]bj/
+*/bin/
+*/obj/
+
+# NuGet
+*.nupkg
+packages/
+.project.lock.json
+project.lock.json
+.nuget/
+*.snupkg
+
+# MSBuild
+*.pidb
+*.svclog
+*.userprefs
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# iOS / Xamarin.iOS
+*.app
+*.app.dSYM
+*.ipa
+*.mobileprovision
+*.p12
+*.cer
+*.der
+*.mobileprovision
+*.xcuserstate
+*.xcuserdata/
+*.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.moved-aside
+DerivedData/
+build/
+*.xcarchive
+
+# Android / Xamarin.Android
+*.apk
+*.ap_
+*.dex
+*.class
+*.keystore
+*.jks
+*.keystore.*
+signing/
+gradle-wrapper.jar
+.gradle/
+local.properties
+monodroid-cache/
+**/GeneratedJava/
+gen/
+build/
+bin/
+obj/
+*.keystore
+
+# Xamarin.Forms / Shared
+Resource.designer.cs
+*.Designer.cs
+
+# Xamarin Mac
+*.app
+*.dSYM
+*.framework
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+*.db-journal
+
+# Rider caches
+.idea/
+*.iml
+
+# Test Results
+TestResult*/
+TestResults/
+
+# Profiling
+*.psess
+*.vsp
+*.vspx
+
+# Temporary files
+*.tmp
+*.temp
+*~.nib
+~$*
+
+# User secrets / config containing sensitive info
+secrets.json
+appsettings.Development.json
+local.settings.json
+*.publishsettings
+*.usersecrets
+
+# Certificates, keys, credentials (do NOT commit)
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Others
+Thumbs.db
+ehthumbs.db

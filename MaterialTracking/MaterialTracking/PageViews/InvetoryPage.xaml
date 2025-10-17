@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.InvetoryPage"
+              xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             NavigationPage.HasNavigationBar="False">
+    <!--Tieu de cot-->
+    <!--<ScrollView Orientation="Horizontal">-->
+        
+ 
+    <Grid  VerticalOptions="Fill" HorizontalOptions="Fill" RowSpacing="1" RowDefinitions="50,*">
+        <Grid ColumnDefinitions="1.5*,1,1.*,1,*,1,*,1,*,1,4*,1,2*,1,2*,1,2*,1,*,1,*" Grid.Row="0" BackgroundColor="#614BC3" HorizontalOptions="Fill" VerticalOptions="Fill">
+            
+            <Label TextColor="White" 
+                   Text="RY" FontSize="20" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" 
+                   FontAttributes="Bold"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="1"/>
+            
+            <Label TextColor="White" 
+                   Text="Article" 
+                   FontSize="20" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"                       
+                   FontAttributes="Bold"
+                   Grid.Column="2"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="3"/>
+            
+            <Label TextColor="White" 
+                       Text="Model Name" 
+                       FontSize="20"
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       FontAttributes="Bold"
+                   Grid.Column="4"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="5"/>
+            
+            <Label TextColor="White" 
+                       Text="Qty" 
+                       FontSize="20"
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="6"
+                       FontAttributes="Bold"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="7"/>
+            
+            <Label TextColor="White" 
+                       Text="Line" 
+                       FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       FontAttributes="Bold"
+                       Grid.Column="8"
+                       />
+            
+            <Frame BackgroundColor="White" Grid.Column="9"/>
+            
+            <Label TextColor="White" 
+                   Text="Total Comp" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="10"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="11"/>
+            
+            <Label TextColor="White" 
+                   Text="OutGoing" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="12"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="13"/>
+            
+            <Label TextColor="White" 
+                   Text="Done" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="14"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="15"/>
+            
+            <Label TextColor="White" 
+                   Text="Delivered" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="16"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="17"/>
+            
+            <Label TextColor="White" 
+                   Text="Delay" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="18"/>
+            
+            <Frame BackgroundColor="White" Grid.Column="19"/>
+            
+            <Label TextColor="White" 
+                   Text="Pro Date" 
+                   FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Column="20"/>
+
+        </Grid>
+
+        <StackLayout Grid.Row="1" >
+            <ScrollView>
+                <StackLayout x:Name="stackContent" Spacing="02">
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+       
+    </Grid>
+    <!--</ScrollView>-->
+</ContentPage>

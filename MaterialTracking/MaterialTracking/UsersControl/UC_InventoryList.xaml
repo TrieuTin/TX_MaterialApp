@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ListView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.UsersControl.UC_InventoryList"
+                ItemsSource="{Binding DataDetail}" 
+                  Margin="1,1,0,1" 
+                  ItemSelected="Item_Tapped" 
+                  BackgroundColor="{StaticResource BlueGray}"
+                  RowHeight="70">
+    <ListView.ItemTemplate >
+        <DataTemplate>
+            <ViewCell>
+                <!--<ViewCell.ContextActions>-->
+                <!--<MenuItem Clicked="OnAdd"
+                                CommandParameter="{Binding .}"
+                                Text="Add" />
+                            <MenuItem Clicked="OnDetails"
+                                CommandParameter="{Binding .}"
+                                Text="Detail" />-->
+
+                <!--</ViewCell.ContextActions>-->
+                <Grid x:Name="GridList"
+                    BackgroundColor="{StaticResource  BlueGray}"
+                    HorizontalOptions="Fill" 
+                    VerticalOptions="Fill" 
+                    HeightRequest="50">
+
+                    <Grid.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="Subtitle" />
+                            <Setter Property="TextColor" Value="{StaticResource BlueBackDark}" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                            <Setter Property="VerticalTextAlignment" Value="Center" />
+                        </Style>
+                    </Grid.Resources>
+
+                    
+
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>

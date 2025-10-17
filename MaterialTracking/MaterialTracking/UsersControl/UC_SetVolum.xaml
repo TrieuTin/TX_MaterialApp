@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.UsersControl.UC_SetVolum" RowDefinitions="50,40,40,40" ColumnDefinitions="200,.5*,170" Padding="2">
+    <Frame BackgroundColor="{Binding ColorSelected}" Grid.ColumnSpan="3" HasShadow="True" Padding="0, -3">
+        <Grid ColumnDefinitions="auto,*" >
+            <CheckBox IsChecked="{Binding CheckedSelect}" Color="LightGreen" CheckedChanged="CheckBox_CheckedChanged"/>
+            <Label HorizontalOptions="Center" Grid.Column="1"
+                   Text="{Binding Ry}" 
+                   TextColor="White" 
+                   FontSize="18"
+                   VerticalTextAlignment="Center"/>
+        </Grid>
+    </Frame>
+
+
+    <Frame CornerRadius="7" HasShadow="True" Grid.Row="1" Grid.RowSpan="3" Margin="0">
+
+        <Image Margin="-1"  BackgroundColor="Gray"  
+                               HorizontalOptions="FillAndExpand"
+                               WidthRequest="180"
+                               HeightRequest="200"
+                               x:Name="imgShoe"
+                               VerticalOptions="FillAndExpand" Grid.RowSpan="3"
+               Source="{Binding Img}"/>
+    </Frame>
+
+    <Label Grid.Row="1" Grid.Column="1" Text="Comp: " FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="2" Grid.Column="1" Text="Model: " FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+    <Label Grid.Row="3" Grid.Column="1" Text="Pairs: " FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"/>
+
+
+    <Label Grid.Row="1" Grid.Column="2" Text="{Binding Component}" TextColor="Black" FontSize="18"  VerticalOptions="Center" HorizontalOptions="Start"/>
+    <ScrollView Grid.Row="2" Grid.Column="2" >
+        
+    <Label Text="{Binding ModelName}" TextColor="Black" FontSize="18" VerticalOptions="Center" HorizontalOptions="Start"/>
+    </ScrollView>
+
+    <StackLayout Grid.Row="3" Grid.Column="2" Orientation="Horizontal">
+        <Frame CornerRadius="7" HasShadow="True" Margin="0" Padding="-2">
+          
+            <Entry WidthRequest="80" Text="{Binding Pairs}" Margin="0" Unfocused="Entry_Unfocused"  TextChanged="Entry_TextChanged" Keyboard="Numeric" TextColor="Black" FontSize="18" VerticalOptions="End" HorizontalOptions="Start">
+                <!--<Entry.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEntryTapped" />
+                </Entry.GestureRecognizers>-->
+            </Entry>
+        </Frame>
+        <Label Text="/" TextColor="DarkGreen" FontSize="18" VerticalOptions="Center" HorizontalOptions="Start"/>
+        <Label Text="{Binding Old_pairs}" TextColor="DarkGreen" FontSize="18" VerticalOptions="Center" HorizontalOptions="Start"/>
+    </StackLayout>
+
+</Grid>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.PageWaiting"
+             Title="{Binding Title}"
+             IconImageSource="Waiting.png"
+             BackgroundColor="{StaticResource BlueBackDark}"
+             xmlns:fontaws="clr-namespace:SysFont">
+    <Grid  RowDefinitions="45,*" IsVisible="true">
+        <!--TaskBar-->
+        <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Gray}">
+            <SearchBar x:Name="searchBar" 
+                       WidthRequest="250"
+                                Placeholder="{Binding SearchBar_Holder}" 
+                                PlaceholderColor="Gray"
+                                BackgroundColor="Transparent"
+                                TextChanged="Search_TextChange"   
+                                TextColor="{StaticResource BlueBackDark}"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <ScrollView Orientation="Horizontal" WidthRequest="300">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal">
+
+                        <RadioButton x:Name="rb_ac" Content="{Binding rb_AC_Content}" AutomationId="chck_AC" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding Ac_enb}"  IsChecked="{Binding Ac_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <RadioButton Content="{Binding rb_ST_Content}" x:Name="rb_st" AutomationId="chck_ST" TextColor="{StaticResource BlueBackDark}"  IsEnabled="{Binding St_enb}" IsChecked="{Binding St_checked ,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <RadioButton Content="{Binding rb_NS_Content}" x:Name="rb_ns" AutomationId="chck_NS" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding Ns_enb}"  IsChecked="{Binding Ns_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                       
+                    </StackLayout>
+                    
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="Ép Nóng" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}"/>
+                        <RadioButton AutomationId="chck_NS" BackgroundColor="{StaticResource BlueSea}" IsEnabled="{Binding Ns_enb}"  IsChecked="{Binding Ns_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="HF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}"/>
+                        <CheckBox Color="{StaticResource BlueSea}" IsEnabled="{Binding Hf_enb}" IsChecked="{Binding Hf_checked ,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="PR" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}" />
+                        <CheckBox Color="{StaticResource BlueSea}" IsEnabled="{Binding Print_enb}" IsChecked="{Binding Print_checked, Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="EM" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}"/>
+                        <CheckBox Color="{StaticResource BlueSea}" IsEnabled="{Binding Em_enb}" IsChecked="{Binding Em_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="May" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}"/>
+                        <RadioButton AutomationId="chck_ST" BackgroundColor="{StaticResource BlueSea}"   IsEnabled="{Binding St_enb}" IsChecked="{Binding St_checked ,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        --><!--<BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>--><!--
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="OS" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource BlueBackDark}" />
+                        <CheckBox Color="{StaticResource BlueSea}" IsEnabled="{Binding Os_enb}" IsChecked="{Binding Os_checked, Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                        
+                    </StackLayout>-->
+                </StackLayout>
+            </ScrollView>
+            <!--  CommandParameter="{Binding Source={x:Reference gv}}"-->
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+           
+            <Button Text="{Static fontaws:Brands.Cart_Arrow_Down}"
+                            FontFamily="aws900"
+                            FontSize="Large"
+                            BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"                    
+                            Margin="0,2,0,2" 
+                            Command="{Binding Cmd_Confirm}"                           
+                           Clicked="Confirm_Clicked"
+                           x:Name="btn_execute"
+                    />
+
+            <Button Text="{Static fontaws:Brands.Undo}"
+                            FontFamily="aws900"
+                            FontSize="Large"
+                            BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"      
+                            Margin="5,2,0,2" 
+                    Clicked="Refresh_Clicked"
+                            Command="{Binding Cmd_Refresh}"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="{Binding Countitems}" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   FontSize="18"
+                   Margin="30 ,0 ,0 ,0" 
+                   TextColor="Gray"/>
+
+        </StackLayout>
+        <!--DataGrid-->
+        <Grid Grid.Row="1"  RowDefinitions="37,*">
+            <Grid BackgroundColor="{StaticResource BlueBacklight}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <!--<ColumnDefinition Width=".7*" />
+                    <ColumnDefinition Width="1*" />-->
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width=".3*" />
+
+
+                </Grid.ColumnDefinitions>
+
+                <CheckBox IsChecked="False" Color="{StaticResource Gray}" CheckedChanged="Checked_Change"  />
+
+                <Label Text="{Binding ColumnRY}" Grid.Column="1" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <Label Text="{Binding ColumnArt}" Grid.Column="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <Label Text="{Binding ColumnComp}" Grid.Column="3" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <Label Text="{Binding ColumnModelName}" Grid.Column="4" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <!--<Label Text="Bwbh" Grid.Column="5" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Clbh" Grid.Column="6" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+
+                <Label Text="Qty" Grid.Column="5" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+
+                <Picker Title="{Binding ColumnDate}" 
+                        ItemsSource="{Binding Prodate_data}"
+                        TitleColor="LightGreen"
+                      x:Name="DatapickerFilter"
+                        
+                        SelectedIndexChanged="On_SelectProDate_Change_Event" 
+                        
+                        Grid.Column="6" FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center" 
+                        TextColor="White"
+                        
+                        Margin="0"
+                        />
+                
+                <Label Text="{Binding ColumnDepID}" Grid.Column="7" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+
+            </Grid>
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Data}"  x:Name="gv_wait" >
+
+
+                <CollectionView.ItemsLayout>
+
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- refine column name in CollectionView -->
+
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width=".5*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <!--<ColumnDefinition Width=".7*" />
+                                <ColumnDefinition Width="1*" />-->
+                                <ColumnDefinition Width="1*" />
+
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width=".3*" />
+
+
+                            </Grid.ColumnDefinitions>
+                            <CheckBox IsChecked="{Binding Sel }" Color="{StaticResource Gray}"/>
+
+                            <Label  Text="{Binding RY}" TextColor="{Binding ColorStatus}" Grid.Column="1" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Art}" TextColor="{Binding ColorStatus}" Grid.Column="2" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding CompVN}" TextColor="{Binding ColorStatus}" Grid.Column="3" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding ModelName}" TextColor="{Binding ColorStatus}" Grid.Column="4" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding TarQty}" TextColor="{Binding ColorStatus}" Grid.Column="5" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding ProdDate}" TextColor="{Binding ColorStatus}" Grid.Column="6" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding DepName}" TextColor="{Binding ColorStatus}" Grid.Column="7" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Grid IsVisible="{Binding IsBusy}" 
+                  Grid.RowSpan="2"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" 
+                  BackgroundColor="Gray" 
+                  Opacity="0.7">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                <ActivityIndicator IsVisible="{Binding IsBusy}" 
+                                   IsRunning="{Binding IsBusy}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" 
+                                   HeightRequest="40" 
+                                   WidthRequest="40"
+                                   Color="{StaticResource Error}"/>
+                <Label Text="Please Wait..." FontSize="Header" x:Name="lbl_Plswait"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.AutoCuttingJobTicketTrackingSummaryView"
+             Title="Auto Cutting Job Ticket Tracking Summary">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <!--This area shows Main Title-->
+        <Frame BackgroundColor="{StaticResource Key=YellowColor}" Padding="20" CornerRadius="0" HeightRequest="100">
+            <Grid Padding="0,0" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lbl_Machine" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" 
+                   TextColor="{StaticResource Key=BlueBacklight}" 
+                   FontSize="36"/>
+                <Grid Grid.Column="1" Padding="0,0" Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lblProno" 
+                   HorizontalTextAlignment="Start" Grid.Row="0"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                    <Label x:Name="lblRY" 
+                   HorizontalTextAlignment="Start"  Grid.Column="1"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                    <Label x:Name="lblArt" 
+                   HorizontalTextAlignment="Start"  Grid.Row="1" Grid.Column="0"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                    <Label x:Name="lblModel" 
+                   HorizontalTextAlignment="Start"  Grid.Row="1" Grid.Column="1"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                    <Label x:Name="lblMatID" 
+                   HorizontalTextAlignment="Start"  Grid.Row="2" Grid.Column="0"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                    <Label x:Name="lblLine" 
+                   HorizontalTextAlignment="Start"  Grid.Row="2" Grid.Column="1"
+                   TextColor="{StaticResource Key=BlueBackDark}" 
+                   FontSize="Medium"/>
+                </Grid>
+            </Grid>
+        </Frame>
+       <!--Second area shows title grid-->
+        <Frame Grid.Row="1" BackgroundColor="{StaticResource Key=Gray}" HeightRequest="70" >
+            <Grid Padding="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.6*"/>
+                    <ColumnDefinition Width="2.6*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="PRONO"  TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="RY" Grid.Column="1" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label Text="ART" Grid.Column="2" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="ModelName" Grid.Column="3" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="MatID" Grid.Column="4" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="Line" Grid.Column="5" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="Component" Grid.Column="6" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="TargetQty" Grid.Column="7" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="TotalProcess" Grid.Column="8" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="SuperMarket" Grid.Column="9" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="ProDate" Grid.Column="10" TextColor="{StaticResource Key=Blue}" FontSize="Subtitle" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            </Grid>
+        </Frame>
+       <!--Third area shows DataGrid-->
+        <ListView x:Name="lstData" Grid.Row="2" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemsSource="{Binding MyData1}"  SelectionMode="Single" RowHeight="80" ItemSelected="ListView_ItemSelected" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                           
+                            <MenuItem Clicked="OnDetails"
+                                CommandParameter="{Binding .}"
+                                Text="Detail" />
+
+                        </ViewCell.ContextActions>
+                        
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems >
+                                    <SwipeItem Text="Detail" BackgroundColor="{StaticResource BlueBacklight}" 
+                                               Invoked="SwipeItem_Invoked"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Frame HasShadow="True" HeightRequest="70">
+                           
+                                <Grid Padding="0,0,0,0">
+                                    <Grid.RowDefinitions >
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--<Label Text="{Binding Machine}" Grid.Row="0" Grid.Column="0" />-->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2.6*"/>
+                                        <ColumnDefinition Width="2.6*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                        <ColumnDefinition Width="2.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding ProNo}" TextColor="{Binding ColorProno}" Grid.Row="0" Grid.Column="0"  FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Ry}" TextColor="{Binding ColorRy}" Grid.Row="0" Grid.Column="1" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Art}" TextColor="{Binding ColorArt}" Grid.Row="0" Grid.Column="2" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding ModelName}" TextColor="{Binding ColorModelName}" Grid.Row="0" Grid.Column="3" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding MatID}" TextColor="{Binding ColorMat}" Grid.Row="0" Grid.Column="4" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Line}" TextColor="{Binding ColorLine}" Grid.Row="0" Grid.Column="5" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding Component}" Grid.Row="0" Grid.Column="6" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding TargetQty}" Grid.Row="0" Grid.Column="7" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding TotalProcessedQty}" Grid.Row="0" Grid.Column="8" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding SuperMarketET}" Grid.Row="0" Grid.Column="9" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                    <Label Text="{Binding ProductionDate}" Grid.Row="0" Grid.Column="10" FontSize="20" VerticalOptions="FillAndExpand"/>
+                                                     
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                        
+                    </ViewCell>
+
+                    <!--<ViewCell>
+                        <Frame>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Machine}"  FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding ProNo}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding Ry}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding Art}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding ModelName}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding MatID}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding Line}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding Component}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding TargetQty}"  FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding TotalProcessedQty}"  FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding SuperMarketET}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                                <Label Text="{Binding ProductionDate}" FontSize="18" Padding="10,0,0,0" VerticalOptions="Center" TextColor="#3CCF4E" />
+                            </StackLayout>
+                        </Frame>
+
+                    </ViewCell>-->
+                 
+
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

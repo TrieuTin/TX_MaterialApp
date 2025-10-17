@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Controls.dg_WH_AC"
+      RowDefinitions="40,*"
+      x:Name="dgv_AC">
+    <Grid BackgroundColor="{StaticResource BlueBacklight}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <!--<ColumnDefinition Width=".7*" />
+                    <ColumnDefinition Width="1*" />-->
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+
+
+        </Grid.ColumnDefinitions>
+
+        <CheckBox IsChecked="False" x:Name="CheckedAll" Color="{StaticResource Gray}" CheckedChanged="Checked_Change"   />
+
+        <Label Text="{Binding Column_RY}" Grid.Column="1" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+        <Label Text="{Binding Column_Art}" Grid.Column="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+        <Label Text="{Binding Column_Comp}" Grid.Column="3" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+        <Label Text="{Binding Column_Model}" Grid.Column="4" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+        <!--<Label Text="Bwbh" Grid.Column="5" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="Clbh" Grid.Column="6" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+
+        <Label Text="{Binding Column_Qty}" Grid.Column="5" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+
+        <Picker Title="{Binding Column_Line}" 
+                        TitleColor="LightGreen"
+                        ItemsSource="{Binding DepName}"
+                        x:Name="DataPickerLean"
+                        
+                        
+                        SelectedIndexChanged="On_SelectDepName_Change_Event" 
+                        
+                        Grid.Column="6" FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center" 
+                        TextColor="White"
+                        
+                        Margin="0"
+                        />
+
+    </Grid>
+
+
+    <CollectionView Grid.Row="1" ItemsSource="{Binding Data}"  x:Name="gv_Inventory" >
+
+
+        <CollectionView.ItemsLayout>
+
+            <LinearItemsLayout Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <!-- refine column name in CollectionView -->
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="auto" />
+                        
+                        <ColumnDefinition Width="1*" />
+                        
+                        <ColumnDefinition Width=".5*" />
+                        
+                        <ColumnDefinition Width="1*" />
+                        
+                        <ColumnDefinition Width="1*" />
+                 
+                        <ColumnDefinition Width="1*" />
+                        
+                        <ColumnDefinition Width="1*" />
+
+                    </Grid.ColumnDefinitions>
+                    <CheckBox IsChecked="{Binding Sel }" Color="{StaticResource Gray}"/>
+
+                    <Label Text="{Binding RY}" TextColor="#59D5E0" Grid.Column="1" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                   
+                    <Label Text="{Binding Art}" TextColor="#59D5E0" Grid.Column="2" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                    <Label Text="{Binding CompVN}" TextColor="#59D5E0" Grid.Column="3" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                    <Label Text="{Binding ModelName}" TextColor="#59D5E0" Grid.Column="4" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                    <Label Text="{Binding TarQty}" TextColor="#59D5E0" Grid.Column="5" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                   
+                    <Label Text="{Binding DepName}" TextColor="#59D5E0" Grid.Column="6" FontSize="16"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                    <Button Grid.Column="1" BackgroundColor="Transparent" Command="{Binding ClickCommand}" CommandParameter="{Binding .}" Grid.ColumnSpan="6"/>
+
+                </Grid>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</Grid>

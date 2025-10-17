@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.InventoryDetailView"
+               xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid">
+    <ContentView>
+        <dg:DataGrid FontSize="18"
+                    ItemsSource="{Binding Data}" SelectionEnabled="True" 
+                     SelectedItem="{Binding Selected}" 
+                     ItemSelected="DataGrid_ItemSelected"
+                     RowHeight="70" HeaderHeight="50"
+                    BorderColor="#CCCCCC" 
+                     HeaderBackground="#EF5B0C" 
+                     PullToRefreshCommand="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsBusy}" 
+                     ActiveRowColor="#8899AA">
+
+
+            <dg:DataGrid.Columns>
+
+
+                <dg:DataGridColumn PropertyName="Size" Width="1*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Size" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+
+                <dg:DataGridColumn PropertyName="PlanQty" Width="2*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="PlanQty" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+                
+
+                <dg:DataGridColumn PropertyName="ActualQty" Width="2*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="ActualQty" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="Userid" Width="2*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Userid" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+                <dg:DataGridColumn PropertyName="Userdate" Width="2*">
+                    <dg:DataGridColumn.FormattedTitle>
+                        <FormattedString>
+                            <Span Text="Userdate" FontSize="20" TextColor="White" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </dg:DataGridColumn.FormattedTitle>
+                </dg:DataGridColumn>
+
+            </dg:DataGrid.Columns>
+
+            <dg:DataGrid.RowsBackgroundColorPalette>
+                <dg:PaletteCollection>
+                    <Color>
+                        #D9F8C4
+                    </Color>
+                    <Color>#F9F9C5</Color>
+                </dg:PaletteCollection>
+            </dg:DataGrid.RowsBackgroundColorPalette>
+
+        </dg:DataGrid>
+    </ContentView>
+</ContentPage>

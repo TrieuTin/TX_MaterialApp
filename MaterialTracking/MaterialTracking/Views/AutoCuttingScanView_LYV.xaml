@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.AutoCuttingScanView_LYV"
+             Title="{Binding BarCode}"
+               xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             NavigationPage.HasBackButton="false"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowSpacing="1" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding RowHeight}"  />
+
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
+        <!--Info Barcode-->
+        <Frame BackgroundColor="{StaticResource BlueGray} " Padding="10,0" x:Name="FrameInfo">
+
+            <Grid Padding="0" IsVisible="{Binding IsGridHide}">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+
+
+                </Grid.ColumnDefinitions>
+                <!--Column 0-->
+
+
+
+                <Label  Text="{Binding Lean}"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                <Label  Text="{Binding BarCode}" Grid.Column="1"   TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <Label  Text="Material:" Grid.Row="1" FontAttributes="Bold" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+
+                <Label  Text="{Binding ModelName}" Grid.Row="3" VerticalTextAlignment="End" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <ScrollView Grid.Row="2">
+                    <Label  Text="{Binding YWPM}"   TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                </ScrollView>
+
+                <Label Text="{Binding Layer}" HorizontalTextAlignment="Center" Grid.Row="3" VerticalTextAlignment="End" Grid.Column="1" Grid.ColumnSpan="3" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                <!--COlumn 1-->
+                <Label  Text="RY" FontAttributes="Bold" Grid.Column="1"  Grid.Row="1" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <ScrollView Grid.Row="2"  Grid.Column="1" Grid.RowSpan="2">
+                    <Label  Text="{Binding RY}"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                </ScrollView>
+
+                <!--Column 2-->
+                <Label  Text="Form" FontAttributes="Bold" Grid.Row="1" Grid.Column="2"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                <Label  Text="{Binding Art_name}" Grid.Row="2" Grid.Column="2"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+
+                <!--Column 3-->
+
+                <Label  Text="Dao" FontAttributes="Bold" Grid.Row="1" Grid.Column="3"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <Label  Text="{Binding CutDie}" Grid.Row="2" Grid.Column="3"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+                <!--Column 4-->
+
+
+                <Label  Text="Article" FontAttributes="Bold" Grid.Row="1" Grid.Column="4"  TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <Label  Text="{Binding Article}" Grid.Row="2" Grid.Column="4" TextColor="{StaticResource BlueBackDark}" FontSize="Medium"/>
+
+                <!--Column 5-->
+                <Label  Text="Total(Batch)" FontAttributes="Bold" Grid.Row="1" Grid.Column="5" TextColor="{StaticResource BlueBackDark}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+
+                <Label  Text="{Binding SumAndTua}" Grid.Row="2" Grid.Column="5" TextColor="{StaticResource BlueBackDark}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+
+                <Grid ColumnDefinitions="*,*" Grid.Column="4" ColumnSpacing="1" Grid.ColumnSpan="2" Grid.Row="3">
+                    <Button x:Name="btn_SaveAll"                            
+
+                            Text="Save All"
+                        Clicked="btn_SaveLocalAll_Clicked"
+                           Command="{Binding CMD}"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            />
+                    <Button x:Name="btn_Confirm"                            
+                            Grid.Column="1"
+                            Text="Confirm"
+                        Clicked="btn_Confirm_Clicked"
+                           Command="{Binding CmdConfirm}"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            />
+                </Grid>
+            </Grid>
+                
+        </Frame>
+
+        <lottie:AnimationView   Grid.Row="1"
+            Animation="Expand.json"  
+            RepeatMode="Infinite"  
+            HeightRequest="20" 
+            WidthRequest="20" 
+            HorizontalOptions="Fill" 
+            VerticalOptions="Fill"
+                                    BackgroundColor="Wheat"
+                                    Command="{Binding Cmd_Collapsed}"/>
+       <!--Grid-->
+     
+
+            <Grid Grid.Row="2" BackgroundColor="White">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+         
+                <Grid x:Name="GridBatch" 
+                    
+                          ColumnDefinitions="80,80" Margin="0,0" 
+                          ColumnSpacing="1" RowSpacing="1" 
+                          Padding="0,0,0,0" 
+                          HorizontalOptions="StartAndExpand" 
+                                  HeightRequest="65" 
+                      BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Text="Batch" TextColor="White" BackgroundColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
+                    <Label Text="Size" TextColor="White" BackgroundColor="Black" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
+                    
+                    
+                    <ScrollView Orientation="Vertical" 
+                                    Grid.Row="1" 
+                                    x:Name="ScrollCoDinh" 
+                                    Grid.ColumnSpan="2">
+
+                        <Grid x:Name="Grd_DataLeft" Margin="0" Padding="0"
+                              ColumnSpacing="1" 
+                              RowSpacing="1" 
+                             RowDefinitions="*"
+                              HorizontalOptions="StartAndExpand" 
+                              VerticalOptions="StartAndExpand" 
+                        BackgroundColor="White"
+                             >
+                       
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+
+            <ScrollView Orientation="Horizontal" Grid.Column="1" >
+                <Grid Margin="0,0,0,0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Frame Margin="0,0,0,0"  Padding="0"  BackgroundColor="{StaticResource BlueBackDark}" HeightRequest="65">
+
+                        <Grid Margin="0" ColumnSpacing="1" RowSpacing="1" Padding="0" HorizontalOptions="StartAndExpand" 
+                                  x:Name="GridTitle"  HeightRequest="65" >
+
+
+
+
+                        </Grid>
+                    </Frame>
+
+                    <ScrollView  Grid.Row="1"  
+                                            Margin="0" Padding="0,0,0,5"
+                                            x:Name="Scrolldata" >
+
+                        <StackLayout Padding="0" Margin="0" Spacing="1">
+                            <Grid Margin="0" Padding="0" x:Name="GridData" ColumnSpacing="1" RowSpacing="1" 
+                                      HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Black"
+                                      RowDefinitions="*">
+
+
+
+                            </Grid>
+
+                        </StackLayout>
+
+                    </ScrollView>
+                </Grid>
+            </ScrollView>
+        </Grid>
+      
+        
+        <ScrollView Orientation="Horizontal" Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <StackLayout Orientation="Horizontal"  x:Name="stk_pages" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Pages:" VerticalTextAlignment="Center"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

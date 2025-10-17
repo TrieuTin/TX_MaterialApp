@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.SetValuePage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:fn ="clr-namespace:SysFont">
+    <Grid RowDefinitions="40,1,*" RowSpacing="2" BackgroundColor="{StaticResource BlueBackDark}">
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Text="{Static fn:Brands.Backward}" Margin="0, 3 ,0, 0" Padding="-3" FontFamily="aws900" FontSize="20" BackgroundColor="{StaticResource BlueSea}" TextColor="White" Clicked="Backbutton_Click"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            
+            <Label x:Name="lbl_Source" FontSize="20"  TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}"  WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Label x:Name="lbl_ry" FontSize="20" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Label x:Name="lbl_Comp" FontSize="20"  TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Label x:Name="lbl_Target" FontSize="20" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Button Text="{Static fn:Brands.Cart_Plus}" Margin="0, 3,0,0" Padding="-3" TextColor="White" FontFamily="aws900" FontSize="20" BackgroundColor="{StaticResource BlueSea}" Clicked="Button_Clicked" />
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/> 
+            
+        </StackLayout>
+        
+        <BoxView BackgroundColor="{StaticResource BlueSea}" Grid.Row="1" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center"/>
+        
+        <ScrollView Grid.Row="2"  Orientation="Both" >
+            <StackLayout Margin="5,0,0,0" x:Name="Stack_Detail" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

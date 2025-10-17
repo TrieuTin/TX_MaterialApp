@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.Master"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             BackgroundColor="{StaticResource BlueSea}"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}"
+              xmlns:dgv="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid" 
+              xmlns:Lang="clr-namespace:MaterialTracking.Class" 
+             xmlns:fontaws="clr-namespace:SysFont">
+    <ContentPage.Content>
+
+        <Grid Padding="0,0,0,5" RowDefinitions="*,88">
+
+            <lottie:AnimationView                
+                Animation="Metting.json"  
+                RepeatMode="Infinite"
+                AnimationSource="AssetOrBundle"
+                HeightRequest="800" 
+                WidthRequest="800" 
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
+                  IsVisible="true"
+                 Command="{Binding ShowRQCommand}"
+                />
+
+            <Grid Grid.Row="1" ColumnDefinitions="*,150">
+                <Label x:Name="lbl_Ver" Text="Version" TextColor="Wheat" Grid.Column="1" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,5,0"/>
+                <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" CornerRadius="30" Grid.Row="0" Grid.ColumnSpan="2"
+                   HeightRequest="50" BackgroundColor="{StaticResource BlueGray}" HasShadow="True">
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+
+                        <StackLayout>
+
+                            <Button Text="{Static fontaws:Brands.Cube}"     
+                                FontFamily="aws900"
+                                FontSize="30"
+                                         Margin="2 ,-5 " 
+                                      TextColor="{StaticResource BlueSea}"
+                                         BackgroundColor="Transparent"
+                                        
+                                         Command="{Binding Cmd_Machine}"/>
+                            <Label Text="Máy" TextColor="{StaticResource BlueSea}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Margin="7,-7 ,3 ,-7"
+                                   x:Name="lbl_machine"/>
+                        </StackLayout>
+
+                        <StackLayout>
+
+                            <Button Text="{Static fontaws:Brands.Warehouse}"     
+                                FontFamily="aws900"
+                                FontSize="30"
+                                         Margin="2 ,-5 " 
+                                      TextColor="{StaticResource BlueSea}"
+                                         BackgroundColor="Transparent"
+                                        
+                                         Command="{Binding Cmd_Inventory}"/>
+                            <Label Text="Kho" 
+                                   TextColor="{StaticResource BlueSea}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin="7,-7 ,3 ,-7"
+                                   x:Name="lbl_store"/>
+                        </StackLayout>
+
+                        <StackLayout  >
+
+                            <Button Text="{Static fontaws:Brands.Qrcode}"
+                                         FontFamily="aws900"
+                                FontSize="37"
+                                     TextColor="{StaticResource RedColor}"
+                                         Margin="2,-7" 
+                                       
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Cmd_Scan}"
+                                 
+                                         xct:TouchEffect.LongPressCommand="{Binding  Cmd_History}"
+                                         xct:TouchEffect.AnimationDuration="500"/>
+                            <Label Text="Quét" 
+                                   TextColor="{StaticResource RedColor}"
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin="7,-9 ,3 ,-7"
+                                   x:Name="lbl_Scan"/>
+                        </StackLayout>
+
+
+
+
+                        <StackLayout IsVisible="true">
+                            <Button Text="{Static fontaws:Brands.Keyboard}"                                     
+                                    FontFamily="aws900"
+                                    FontSize="30"
+                                    Margin="2,-5" 
+                                      TextColor="{StaticResource BlueSea}"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding Cmd_Handle_input}"/>
+                            <Label Text="Nhập tay"
+                                   TextColor="{StaticResource BlueSea}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center"  
+                                   Margin="7,-7 ,3 ,0" 
+                                   x:Name="lbl_input"/>
+                        </StackLayout>
+
+
+                        <!--<StackLayout IsVisible="false">
+                            <Button Text="{Static fontaws:Brands.Bell}"
+                            FontFamily="aws900"
+                            FontSize="30"
+                             BackgroundColor="Transparent" 
+                            TextColor="{Binding BellColor}"
+                             Margin="2,-5" 
+                            Command="{Binding Cmd_Bell}"/>
+                            <Label Text="Thông báo" TextColor="{StaticResource BlueSea}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  Margin="7,-7 ,3 ,0" />
+                        </StackLayout>-->
+
+                        <StackLayout IsVisible="true">
+                            <!--<Button Text="{Static fontaws:Brands.Database}"
+                            FontFamily="aws900"
+                            FontSize="30"
+                             BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"
+                             Margin="2,-5" 
+                            Command="{Binding Cmd_DataLocal_Click}"/>-->
+                            <lottie:AnimationView                
+                                    Animation="BellRing.json"  
+                                    RepeatMode="Infinite"
+                                    AnimationSource="AssetOrBundle"
+                                    ImageAssetsFolder ="Assets/Lottie"  
+                                    HeightRequest="120" 
+                                    WidthRequest="120" 
+                                    HorizontalOptions="CenterAndExpand" 
+                                    VerticalOptions="CenterAndExpand"
+                                    
+                                Command="{Binding Cmd_Bell}"
+                                AutoPlay="False" 
+                                Margin="-15,-38,-15,-38"
+                                x:Name="btn_bell"/>
+
+
+                            <!--<Label Text="DataLocal" TextColor="{StaticResource BlueSea}"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  Margin="7,-5 ,3 ,-5" />-->
+                            <Label x:Name="lbl_TB"  Text="Thông báo" 
+                                   TextColor="{Binding BellColor}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Center"  
+                                   Margin="7,-7 ,3 ,0" 
+                                  />
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            
+            
+            
+            
+            
+            
+            <!--End Menu Bar-->
+            <Grid IsVisible="{Binding IsBusy}" 
+                  Grid.RowSpan="2"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" 
+                  BackgroundColor="Gray" 
+                  Opacity="0.9">
+                <StackLayout  HorizontalOptions="Center"
+                  VerticalOptions="Center" >
+                    
+                <ActivityIndicator IsVisible="{Binding IsBusy}" 
+                                   IsRunning="{Binding IsBusy}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" 
+                                   HeightRequest="40" 
+                                   WidthRequest="40"
+                                   Color="{StaticResource YellowColor}"                    
+                                   />
+                    <Label Text="Please wait..." TextColor="White" FontSize="Header" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

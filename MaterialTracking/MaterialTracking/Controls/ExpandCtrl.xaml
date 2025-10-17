@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Controls.ExpandCtrl"
+      xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+      >
+
+    <xct:Expander >
+        <xct:Expander.Header>
+            <Grid Padding="0" >
+                <Frame BackgroundColor="{StaticResource BlueBacklight}" HasShadow="True"/>
+                <Grid RowDefinitions="auto,auto" RowSpacing="1">
+                    <Label Text="25" x:Name="lblry" Padding="10,10"
+                            FontAttributes="Bold"
+                            FontSize="Large" />
+
+                    <Label
+                        x:Name="lblDep"
+                        Padding=" 7,0"                          
+                        FontAttributes="Italic"
+                        FontSize="Medium"
+                        Grid.Row="1"
+                        />
+
+                </Grid>
+            </Grid>
+
+
+        </xct:Expander.Header>
+        <StackLayout Padding="30,10" x:Name="subContent" BackgroundColor="{StaticResource BlueSea}">
+
+        </StackLayout>
+
+
+    </xct:Expander>
+
+</Grid>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MaterialTracking.ViewModels"
+             x:Class="MaterialTracking.Views.AutoCuttingPageView"       NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <viewModels:AutoCuttingPageViewModels  />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Frame BackgroundColor="{StaticResource Key=YellowColor}" Padding="24" CornerRadius="0">
+            <Label Text="AutoCutting" HorizontalTextAlignment="Center" TextColor="{StaticResource Key=RedColor}" FontSize="36"/>
+        </Frame>
+        <!--<Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>-->
+        <ScrollView>
+            <StackLayout>
+                <Button Text="Job Ticket" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, 0.5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}" Command="{Binding JobTicketCommand}"/>
+                <!--<Button Text="Scan BarCode" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, 0.5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"  Command="{Binding ScanBarcodeCommand}"/>-->
+                <Button Text="SuperMaket" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}" Command="{Binding SuperMaketCommand}"/>
+                <Button Text="Cutting" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"/>
+                <Button Text="Production Tracking" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"/>
+                <Button Text="Stock" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"  Command="{Binding StockCommand}"/>
+            </StackLayout>
+        </ScrollView>
+
+    </StackLayout>
+</ContentPage>

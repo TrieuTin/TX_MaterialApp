@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Views.LoginView"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:fontaws ="clr-namespace:SysFont"
+             NavigationPage.HasNavigationBar="False"
+             Title="{Binding Title}" IsBusy="{Binding IsBusy}"  
+              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+    <Grid BackgroundColor="#E5Ebee">
+        <xct:MediaElement Source="{Binding PathClip}"  ShowsPlaybackControls="False" 
+                      IsLooping="True" Aspect="{Binding Aspected}" AutoPlay="True" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Volume="0" 
+                          IsVisible="{Binding IsturnOn}"/>
+
+        <BoxView Opacity="0.3" BackgroundColor="#00C2FF" />
+      
+        <Grid Margin="35" HeightRequest=" 520">
+            <!--<Path Fill="white" Aspect="Uniform" HorizontalOptions="CenterAndExpand" Opacity="0.3" Data="M30.6,172.838V696.314L348.157,426.72Z"/>-->
+            <Path Fill="#E4DCCF" StrokeThickness="1" Aspect="Uniform" HorizontalOptions="CenterAndExpand" Opacity="0.9" Data="m299.73853,84.53157l265.08915,1.25481l0,324.99653l-265.00022,0l-0.08893,-326.25135z"/>
+            <Path Stroke="#00235B"  StrokeThickness="1" Aspect="Uniform" HorizontalOptions="CenterAndExpand" Opacity="1" Data="m257.50353,54.87657l209.01398,20.25978l1.87906,233.73866l-210.89303,27.25269l0,-281.25114z"/>
+
+            <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="35,0">
+                <Label Text="Material Tracking"  FontAttributes="Bold" FontSize="30" TextColor="#03506F" Margin="0,20,0,0" HorizontalOptions="Center"/>
+                <Label Text="{Static fontaws:Brands.User_Circle}" FontFamily="aws900" HorizontalOptions="Center" Margin="0,15,0,-20" FontSize="50" TextColor="#002B5B"/>
+                <StackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0 ,20,0,0">
+                    <Grid  HeightRequest="40" WidthRequest="250" Padding="10, 0" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent">
+                        <Entry FontSize="18" Placeholder="User Name" Text="{Binding Id, Mode=TwoWay}"
+                               PlaceholderColor="#497174"
+                               Margin="5,-5"
+                               TextColor="{StaticResource Blue}"/>
+                    </Grid>
+                    <Grid  HeightRequest="40" WidthRequest="250" Padding="10 ,0" HorizontalOptions="StartAndExpand"  BackgroundColor="Transparent">
+                        <Entry FontSize="18" Placeholder="Password" IsPassword="True" Text="{Binding Pwd, Mode=TwoWay}"
+                               PlaceholderColor="#497174" TextColor="{StaticResource Blue}" Margin="5,-5"/>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" Spacing="5" Margin="0,45,0,0" HeightRequest="60">
+                        <Frame CornerRadius="40" BackgroundColor="Transparent" BorderColor="White" HeightRequest="60">
+                            <StackLayout Orientation="Horizontal" Spacing="5" Margin="0,0,0,0">
+                                <RadioButton Content="LVL" IsChecked="{Binding FacLVL, Mode=TwoWay}" Margin="0,-3" TextColor="#00235B" VerticalOptions="Center"/>
+                                <RadioButton Content="LYV" IsChecked="{Binding FacLYV, Mode=TwoWay}" Margin="0,-3" TextColor="#00235B" VerticalOptions="Center"/>
+                                <RadioButton Content="LHG" IsChecked="{Binding FacHG,Mode=TwoWay}" Margin="0,-3" TextColor="#00235B" VerticalOptions="Center"/>
+                                <RadioButton Content="LYM" IsChecked="{Binding FacLYM,Mode=TwoWay}" Margin="0,-3" TextColor="#00235B" VerticalOptions="Center"/>
+                            </StackLayout>
+
+                        </Frame>
+                  
+                    </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" >
+                        <!--<Frame BackgroundColor="Transparent" BorderColor="#03506F" Padding="0" HeightRequest="46" WidthRequest="250" CornerRadius="30" >
+                            --><!--<Grid HeightRequest="200">
+                                --><!--<Label Text="Login"  HorizontalOptions="End" TextColor="#002B5B" VerticalOptions="Center" FontSize="Large"/>--><!--
+                              
+                            </Grid>-->
+                            <!--<Button Text="{Static fontaws:Brands.Arrow_Alt_Circle_Right}" 
+                                        FontFamily="aws900"
+                                        FontSize="Large"
+                                        HeightRequest="200"
+                                        Padding="-5"
+                                        TextColor="#002B5B" 
+                                        BackgroundColor="Transparent" Command="{Binding LoginCommand}" ></Button>--><!--
+
+                          
+
+                        </Frame>-->
+                        <lottie:AnimationView                
+                                    Animation="LoginAnimation.json"  
+                                    RepeatMode="Infinite"
+                                    AnimationSource="AssetOrBundle"
+                                    
+                                    HeightRequest="90" 
+                                    WidthRequest="90" 
+                                    HorizontalOptions="CenterAndExpand" 
+                                    VerticalOptions="CenterAndExpand"
+                                    IsAnimating="False"
+                                   
+                                Command="{Binding LoginCommand}"
+                                AutoPlay="True"
+                                Margin="0,-5,0,0"
+                                x:Name="btn_bell"/>
+
+                    </StackLayout>
+                </StackLayout>
+                <!--<Label HorizontalOptions="End" Text="Tạo tài khoảng" Padding="0,33,0,0" TextColor="Blue"  >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CreateAccCommand}" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                    
+                </Label>-->
+            </StackLayout>
+            <StackLayout VerticalOptions="End" HorizontalOptions="End" Margin="0,0,5,0" >
+                <Frame HasShadow="True" BackgroundColor="#03506F" BorderColor="#ECECEC" Padding="0" Opacity="0.6" HeightRequest="50" WidthRequest="220" CornerRadius="30" >
+                    <StackLayout >
+                        <Label Text="{Binding Serial}" HorizontalOptions="Center" TextColor="#ECECEC" VerticalOptions="Center" FontSize="14"/>
+                        <Label Text="{Binding Version}" HorizontalOptions="Center" TextColor="#ECECEC" VerticalOptions="Center" FontSize="14"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+      
+        <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40"/>
+    </Grid>
+</ContentPage>

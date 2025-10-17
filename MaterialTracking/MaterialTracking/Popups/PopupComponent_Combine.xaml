@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Popups.PopupComponent_Combine"
+               xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            Size="350,340">
+    <Grid x:Name="Container" RowDefinitions="40,*" >
+        <Grid BackgroundColor="{StaticResource BlueBacklight}">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="labelTitle" Text="Component"  FontSize="16" Margin="15,10" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+
+
+        </Grid>
+
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Data}"  x:Name="gv_Inventory" >
+
+
+            <CollectionView.ItemsLayout>
+
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!-- refine column name in CollectionView -->
+
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+
+                            
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="1*" />
+                           
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Background="{StaticResource BlueBacklight}" WidthRequest="15" HeightRequest="15" xct:CornerRadiusEffect.CornerRadius="12" Margin="15,5"/>
+                        <Label Text="{Binding Component}" Grid.Column="1" TextColor="{StaticResource BlueBacklight}" FontSize="16" Padding="0,5"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                       
+
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+  
+</xct:Popup>

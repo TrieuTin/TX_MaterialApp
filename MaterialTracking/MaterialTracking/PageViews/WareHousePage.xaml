@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.PageViews.WareHousePage"
+              BackgroundColor="{StaticResource BlueBackDark}"
+               Title="{Binding Title}"
+             xmlns:fontaws="clr-namespace:SysFont"
+             IconImageSource="WareHouse.png"
+              xmlns:toolkit="clr-namespace:Xamarin.CommunityToolkit.Core;assembly=Xamarin.CommunityToolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    
+    <Grid  RowDefinitions="45,*" IsVisible="true" x:Name="mainGrid">
+        <!--TaskBar-->
+        <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Gray}">
+            <SearchBar x:Name="searchBar" 
+                                Placeholder="{Binding Search_Holder}" 
+                                PlaceholderColor="Gray"
+                                BackgroundColor="Transparent"
+                                TextChanged="Search_TextChange"   
+                       SearchButtonPressed="Search_Presss"
+                                TextColor="{StaticResource BlueBackDark}"
+                       WidthRequest="250"/>
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--<Grid RowDefinitions="*" ColumnDefinitions="*" Padding="-1" WidthRequest="50">
+                <Label Text="{Static fontaws:Brands.Calendar_Alt}" TextColor="{StaticResource BlueSea}" HorizontalOptions="Center" VerticalTextAlignment="Center"
+                       FontFamily="aws900" FontSize="Large" IsVisible="{Binding isShowIcon}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LabelIconTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <DatePicker DateSelected="On_ChangeDate_Event" x:Name="Date_Filter" IsVisible="{Binding isShowDatepicker}" TextColor="Gray"/>
+            </Grid>-->
+
+            
+            <ScrollView Orientation="Horizontal" WidthRequest="350">
+                
+                <Grid ColumnDefinitions="50,1,*,1,*,1,*,1,*">
+                    <Grid RowDefinitions="*" ColumnDefinitions="*" Padding="-1" WidthRequest="50">
+                        <Label Text="{Static fontaws:Brands.Calendar_Alt}" TextColor="{StaticResource BlueSea}" HorizontalOptions="Center" VerticalTextAlignment="Center"
+                       FontFamily="aws900" FontSize="Large" IsVisible="{Binding isShowIcon}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LabelIconTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <DatePicker DateSelected="On_ChangeDate_Event" x:Name="Date_Filter" IsVisible="{Binding isShowDatepicker}" TextColor="Gray"/>
+                    </Grid>
+                    
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" Grid.Column="1" WidthRequest="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <RadioButton HorizontalOptions="Start" x:Name="rb_AC" Grid.Column="2" Content="{Binding Rb_Label_AC}" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding Ac_enb}"  IsChecked="{Binding Ac_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" Grid.Column="3" WidthRequest="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                    <RadioButton HorizontalOptions="Start"  x:Name="rb_LS" Grid.Column="4" Content="Lazer" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding Lz_enb}" IsChecked="{Binding Lz_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" Grid.Column="5" WidthRequest="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                    <RadioButton HorizontalOptions="Start" x:Name="rb_NS" Content="{Binding Rb_Label_NS}" Grid.Column="6" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding Ns_enb}" IsChecked="{Binding Ns_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" Grid.Column="7" WidthRequest="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                    <RadioButton HorizontalOptions="Start" x:Name="rb_ST"  Content="{Binding Rb_Label_ST}" Grid.Column="8" TextColor="{StaticResource BlueBackDark}" IsEnabled="{Binding St_enb}" IsChecked="{Binding St_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                   
+                                       
+                    <!--<RadioButton  Content="In Lụa" TextColor="{StaticResource BlueBackDark}" IsVisible="{Binding Print_enb}" IsChecked="{Binding Print_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+
+                    <!--<RadioButton  Content="Ép Cao Tầng" TextColor="{StaticResource BlueBackDark}" IsVisible="{Binding Hf_enb}" IsChecked="{Binding Hf_checked,Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>
+                    <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+
+                </Grid>
+            </ScrollView>
+            <!--<CheckBox Color="{StaticResource BlueSea}" IsChecked="{Binding Os_checked, Mode=TwoWay}" CheckedChanged="On_FilterChange_Event"/>-->
+            <!-- CommandParameter="{Binding Source={x:Reference gv_Inventory}}"-->
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Button Text="{Static fontaws:Brands.Cart_Arrow_Down}"
+                            FontFamily="aws900"
+                            FontSize="Large"
+                            BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"          
+                            Margin="0,-5,0,-5" 
+                            WidthRequest="50"
+                            Command="{Binding Cmd_Confirm}" 
+                           
+                           Clicked="Confirm_Clicked"
+                         x:Name="btn_Confirm" />
+
+            <Button Text="{Static fontaws:Brands.Undo}"
+                            FontFamily="aws900"
+                            FontSize="Large"
+                            BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"   
+                            WidthRequest="50"
+                            Margin="3,-5,0,-5" 
+                    Clicked="Refresh_Clicked"
+                            Command="{Binding Cmd_Refresh}"                                          />
+            <Button Text="{Static fontaws:Brands.List_Alt}"
+                            FontFamily="aws900"
+                            FontSize="Large"
+                            BackgroundColor="Transparent" 
+                            TextColor="{StaticResource BlueSea}"   
+                            WidthRequest="50"
+                            Margin="3,-5,0,-5" 
+                            x:Name="btn_Request"
+                            Command="{Binding RequestCommand}"    
+                    xct:TouchEffect.LongPressCommand="{Binding  Source={x:Reference btn_Request},Path=BindingContext.LongPressCommand}"
+                                         xct:TouchEffect.AnimationDuration="500"/>
+            
+            <BoxView BackgroundColor="{StaticResource BlueSea}" WidthRequest="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="{Binding CountItems}" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   FontSize="18"
+                   Margin="30 ,0 ,0 ,0" 
+                   TextColor="Gray"/>
+        </StackLayout>
+      
+      
+        <Grid IsVisible="{Binding IsBusy}" x:Name="Grid_Activity"
+                  Grid.RowSpan="2"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill" 
+                  BackgroundColor="Gray" 
+                  Opacity="0.7">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                
+            <ActivityIndicator IsVisible="{Binding IsBusy}" 
+                                   IsRunning="{Binding IsBusy}" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center" 
+                                   HeightRequest="40" 
+                                   WidthRequest="40"
+                                   Color="{StaticResource Error}"/>
+                <Label Text="Please Wait..." FontSize="Header"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

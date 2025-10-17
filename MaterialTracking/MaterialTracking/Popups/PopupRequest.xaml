@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Popups.PopupRequest"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            IsLightDismissEnabled="true"
+           Size="450,480">
+    <Grid RowDefinitions="60,*,50" RowSpacing="1">
+
+        <Frame  BackgroundColor="{x:StaticResource Notification}" Padding="-5" HeightRequest="60">
+            <SearchBar Text="{Binding RY}"
+                       Placeholder="Search RY"
+                        SearchCommand="{Binding SearchCommand}"
+                        SearchCommandParameter="{Binding RY}" 
+                        SearchButtonPressed="SearchBar_SearchButtonPressed"
+                       TextChanged="SearchBar_TextChanged"/>
+        </Frame>
+        <Grid Grid.Row="1"  RowDefinitions="40,*" RowSpacing="2">
+            <Grid BackgroundColor="{StaticResource BlueBacklight}" ColumnDefinitions="auto,*,*,*" RowDefinitions="auto">
+                
+                <CheckBox IsChecked="False" x:Name="CheckedAll" Color="{StaticResource Gray}" CheckedChanged="Checked_Change"  />
+                <Label Text="Comp" Grid.Column="1" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <Label Text="BWBH" Grid.Column="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+                <Label Text="Qty" Grid.Column="3" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+            </Grid>
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Data, Mode=TwoWay}"  x:Name="Cv" BackgroundColor="{StaticResource Blue}" >
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Grid ColumnDefinitions="auto,*,*,*" RowDefinitions="auto">
+
+                            <CheckBox IsChecked="{Binding Selected }" Color="{StaticResource Gray}"/>
+
+                            <Label Text="{Binding Comp}"  Grid.Column="1" FontSize="16" TextColor="Wheat" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Bwbh}"  Grid.Column="2" FontSize="16" TextColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Qty}"  Grid.Column="3" FontSize="16"  TextColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+        <Button Grid.Row="2" Text="OK" Margin="-5" BackgroundColor="{StaticResource PrimaryColor}" 
+                Command="{Binding TapCommand}"/>
+    </Grid>
+</xct:Popup>

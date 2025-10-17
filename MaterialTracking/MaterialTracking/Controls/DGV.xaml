@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.Controls.DGV"
+      RowDefinitions="40,*">
+    <Grid BackgroundColor="{StaticResource BlueBacklight}" x:Name="Grid_Title_Column">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+    </Grid>
+    <CollectionView Grid.Row="1" ItemsSource="{Binding Data}"  x:Name="gv_Inventory" >
+
+
+        <CollectionView.ItemsLayout>
+
+            <LinearItemsLayout Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <!-- refine column name in CollectionView -->
+
+
+                <Grid x:Name="Gird_Row">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+
+                    </Grid.RowDefinitions>
+
+
+                </Grid>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</Grid>

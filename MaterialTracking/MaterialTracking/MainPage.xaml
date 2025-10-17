@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MaterialTracking.ViewModels"
+             x:Class="MaterialTracking.MainPage"  NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.BindingContext>
+        <viewModels:MainPageViewModels  />
+    </ContentPage.BindingContext>-->
+    <StackLayout>
+        <Frame BackgroundColor="{StaticResource Key=GreenColor}" Padding="24" CornerRadius="0">
+            <Label Text="Main Page" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Start your tasks now" FontSize="Title" Padding="30,10,30,10"/>
+                <Label Text="Make selects a option to go to your task!" FontSize="16" Padding="30,0,30,0"/>
+                <Label FontSize="16" Padding="30,24,30,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="You can contact with us at "/>
+                                <Span Text="MES deparment" FontAttributes="Bold"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Text="UPPER" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, 0.5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}" Command="{Binding UpperCommand}"/>
+                <Button Text="Bottom" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"/>
+                <Button Text="PO Tracking" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}"/>
+                <Button Text="DataGridLocal" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=PrimaryColor}" Command="{Binding ManagerDBLocal_Command}"/>
+                <Button Text="LogOut" HeightRequest="80" TextColor="White" FontSize="23" Margin="0, .5, 0 ,5" BackgroundColor="{StaticResource Key=RedColor}" Command="{Binding LogoutCommand}"/>
+            </StackLayout>
+        </ScrollView>
+        
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaterialTracking.UsersControl.UCInput_LYV"
+        HeightRequest="150"
+      HorizontalOptions="Center"
+      VerticalOptions="Fill" BackgroundColor="{Binding BColor}"
+      Padding="3" 
+      Margin="2"
+      IsEnabled="{Binding SetOnOFF}"
+       xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+      xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+      AutomationId="{Binding Prono}" ColumnSpacing="0" 
+      RowSpacing="0" >
+
+   
+
+</Grid>
