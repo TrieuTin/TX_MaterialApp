@@ -543,14 +543,15 @@ namespace MaterialTracking.PageViews
       
         bool? Func_Combine(List<Model_DataGrid> DataGridview,string namevn ,string nameeng)
         {
-            int qty=0;
+            int qty = 0;
+            int tar = 0;
             //Create a new ID of Component
             string ry = DataGridview[0].RY;
 
             string newID = string.Format("{0}{1}", DB.StoreLocal.Instant.CurrentDep, DateTime.Now.Ticks);
 
             //Check exist ID in App_Details_Combine table
-
+            //kiem tra chac chan rang phai cung mot lenh moi ghep duoc
             bool allSameRY = DataGridview.Select(x => x.RY).Distinct().Count() == 1;
 
             if (allSameRY)
@@ -564,8 +565,9 @@ namespace MaterialTracking.PageViews
                     var tarQty = exist_id.TarQty.Split('/');
 
                     qty = int.Parse(tarQty[0]);
+                    tar = int.Parse(tarQty[1]);
 
-                    if (dt.Rows.Count > 0) return false;
+                    if (dt.Rows.Count > 0) goto UpdateRow;
                     else
                     {
 
@@ -588,7 +590,7 @@ namespace MaterialTracking.PageViews
                         }
                     }
                 }
-                string sql2 = @"INSERT INTO [dbo].[App_Combine_Comp]
+        string sql2 = @"INSERT INTO [dbo].[App_Combine_Comp]
                                ([CompID]
                                ,[NameComp]
                                ,[CombDate]
@@ -614,7 +616,7 @@ namespace MaterialTracking.PageViews
                 return null;
             }
 
-
+            UpdateRow: return true; //string sql = $"SELECT Qty FROM App_Combine_Comp where CompID='{}'";
             
         }
         int solanchay = 0;

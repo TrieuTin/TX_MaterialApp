@@ -749,12 +749,21 @@ order by ZLBH";
         {
             return _connection.Table<Barcode_Edit_LVY>().ToList();
         }
-        public List<Barcode_Edit_LVY> ExistRow_Local_LYV(string barcode, string Tua,  string bwbh,string clbh, string Gxxcc="")
+        public List<Barcode_Edit_LVY> ExistRow_Local_LYV(string barcode, string Tua,  string bwbh,string clbh, string Gxxcc="",string zlbh ="")
         {
             if (Gxxcc != "")
-            
-                return _connection.Table<Barcode_Edit_LVY>().Where(x => (x.Barcode == barcode) && (x.GXXCC == Gxxcc) && (x.CLBH == clbh) && (x.BWBH == bwbh) && (x.Tua == Tua)).ToList();
-            
+                if(zlbh =="")
+                    return _connection.Table<Barcode_Edit_LVY>().Where(x => (x.Barcode == barcode) && 
+                                                                        (x.GXXCC == Gxxcc) && 
+                                                                        (x.CLBH == clbh) && 
+                                                                        (x.BWBH == bwbh) && 
+                                                                        (x.Tua == Tua)).ToList();
+                else return _connection.Table<Barcode_Edit_LVY>().Where(x => (x.Barcode == barcode) &&
+                                                                        (x.GXXCC == Gxxcc) &&
+                                                                        (x.CLBH == clbh) &&
+                                                                        (x.BWBH == bwbh) &&
+                                                                        (x.Tua == Tua) &&
+                                                                        (x.ZLBHs ==zlbh)).ToList();
             else
 
                 return _connection.Table<Barcode_Edit_LVY>().Where(x => (x.Barcode == barcode)  && (x.CLBH == clbh) && (x.BWBH == bwbh) && (x.Tua == Tua)).ToList();

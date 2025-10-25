@@ -160,7 +160,20 @@ namespace MaterialTracking. DB.SQL
                 bool c = !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
                 if (!c) return c;
 
-                string sql = $"SELECT App_Users.Lock, app_users.DepID FROM Busers left join App_Users on busers.USERID = App_Users.UserID where busers.USERID ='{username}' and Busers.Pwd='{password}' and App_users.appName ='Material'";
+                string sql = "";
+
+                var fac = DB.StoreLocal.Instant.Myfac;
+
+
+                if (fac != MyFactory.LYV)
+                {                    
+                    sql = $"SELECT App_Users.Lock, app_users.DepID FROM Busers left join App_Users on busers.USERID = App_Users.UserID where busers.USERID ='{username}' and Busers.Pwd='{password}' and App_users.appName ='Material'";
+                }
+                else
+                {
+                    sql = $"SELECT * FROM Busers  where busers.USERID ='{username}' and Busers.Pwd='{password}'";
+
+                }
 
                 var dt = FillDataTable(sql); 
 
@@ -168,34 +181,30 @@ namespace MaterialTracking. DB.SQL
 
                 if (dt.Rows.Count != 0)
                 {
-                    var locked = dt.Rows[0]["lock"].ToString();
 
-                    if (locked.ToUpper() == "n".ToUpper())
+                    if (fac != MyFactory.LYV)
                     {
-                        var material_role = dt.Rows[0]["DepID"].ToString();
 
-                        DB.StoreLocal.Instant.CurrentDep = material_role;
+                        var locked = dt.Rows[0]["lock"].ToString();
 
-                        sql = "UPDATE App_Users SET LastLogin = Getdate() WHERE (UserID=@userid and App_Users.AppName ='Material')";
-
-                        Update_Parameter(sql, new string[] { username });
-                    }
-                    else
-                    {
-                        if(locked == "y")
+                        if (locked.ToUpper() == "n".ToUpper())
                         {
-                            return null;
+                            var material_role = dt.Rows[0]["DepID"].ToString();
+
+                            DB.StoreLocal.Instant.CurrentDep = material_role;
+
+                            sql = "UPDATE App_Users SET LastLogin = Getdate() WHERE (UserID=@userid and App_Users.AppName ='Material')";
+
+                            Update_Parameter(sql, new string[] { username });
                         }
-                    }
-
-
-
-                    //if (DB.StoreLocal.Instant.List_DepId.Contains(DB.StoreLocal.Instant.Depid))
-                    //{
-                    //    return true;
-
-                    //}
-                    //else return false;
+                        else
+                        {
+                            if (locked == "y")
+                            {
+                                return null;
+                            }
+                        }
+                    }                                   
 
                     return true;
                 }

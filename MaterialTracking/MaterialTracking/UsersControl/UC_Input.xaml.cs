@@ -275,7 +275,7 @@ namespace MaterialTracking.UsersControl
 
             if (Qtyed > 0)
             {
-                var exist = DB.DataLocal.Table.ExistRow_Local_LYV(barcode, tua, bwbh, clbh, gsize);
+                var exist = DB.DataLocal.Table.ExistRow_Local_LYV(barcode, tua, bwbh, clbh, gsize,zlbh);
 
                 if (exist.Any())
                 {

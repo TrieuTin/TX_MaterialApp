@@ -42,7 +42,10 @@ namespace MaterialTracking.PageViews
             Notification_Tick();
 
             //Co Yeu Cau hay khong
-            if ((ThisContext as Model_Mater).HasRQ) Services.Alert.PopupShowRequest();
+            var fac = DB.StoreLocal.Instant.Myfac;
+
+            if(fac!= MyFactory.LYV)
+                if ((ThisContext as Model_Mater).HasRQ) Services.Alert.PopupShowRequest();
 
         }
 
@@ -1532,7 +1535,9 @@ where o.OrderId not in (SELECT  d.orderid FROM App_Material_process d)";
        
         private async void Input_Code()
         {
-            if (DB.StoreLocal.Instant.Depname == Departments.AutoCutting || DB.StoreLocal.Instant.Depname == Departments.Lazer) 
+            var fac = DB.StoreLocal.Instant.Myfac;
+
+            if (DB.StoreLocal.Instant.Depname == Departments.AutoCutting || DB.StoreLocal.Instant.Depname == Departments.Lazer || fac == MyFactory.LYV) 
             {
                 //Neu khong phai la Laser hoac la autocutting thi khong dc nhap tay
 

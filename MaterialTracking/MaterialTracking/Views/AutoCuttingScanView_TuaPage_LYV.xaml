@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MaterialTracking.Views.AutoCuttingScanView_LYV"
-             Title="{Binding BarCode}"
+             x:Class="MaterialTracking.Views.AutoCuttingScanView_TuaPage_LYV"
+               Title="{Binding BarCode}"
                xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
              NavigationPage.HasBackButton="false"
@@ -12,11 +12,10 @@
             <RowDefinition Height="{Binding RowHeight}"  />
 
             <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <!--<RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>-->
 
         </Grid.RowDefinitions>
-        <!--Info Barcode-->
         <Frame BackgroundColor="{StaticResource BlueGray} " Padding="10,0" x:Name="FrameInfo">
 
             <Grid Padding="0" IsVisible="{Binding IsGridHide}">
@@ -104,7 +103,7 @@
                             />
                 </Grid>
             </Grid>
-                
+
         </Frame>
 
         <lottie:AnimationView   Grid.Row="1"
@@ -116,95 +115,5 @@
             VerticalOptions="Fill"
                                     BackgroundColor="Wheat"
                                     Command="{Binding Cmd_Collapsed}"/>
-       <!--Grid-->
-     
-
-            <Grid Grid.Row="2" BackgroundColor="White">
-                <Grid.ColumnDefinitions >
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-         
-                <Grid x:Name="GridBatch" 
-                    
-                          ColumnDefinitions="80,80" Margin="0,0" 
-                          ColumnSpacing="1" RowSpacing="1" 
-                          Padding="0,0,0,0" 
-                          HorizontalOptions="StartAndExpand" 
-                                  HeightRequest="65" 
-                      BackgroundColor="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    
-                    <Label Text="Batch" TextColor="White" BackgroundColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
-                    <Label Text="Size" TextColor="White" BackgroundColor="Black" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
-                    
-                    
-                    <ScrollView Orientation="Vertical" 
-                                    Grid.Row="1" 
-                                    x:Name="ScrollCoDinh" 
-                                    Grid.ColumnSpan="2">
-
-                        <Grid x:Name="Grd_DataLeft" Margin="0" Padding="0"
-                              ColumnSpacing="1" 
-                              RowSpacing="1" 
-                             RowDefinitions="*"
-                              HorizontalOptions="StartAndExpand" 
-                              VerticalOptions="StartAndExpand" 
-                        BackgroundColor="White"
-                             >
-                       
-                        </Grid>
-                    </ScrollView>
-                </Grid>
-
-            <ScrollView Orientation="Horizontal" Grid.Column="1" >
-                <Grid Margin="0,0,0,0" RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Frame Margin="0,0,0,0"  Padding="0"  BackgroundColor="{StaticResource BlueBackDark}" HeightRequest="65">
-
-                        <Grid Margin="0" ColumnSpacing="1" RowSpacing="1" Padding="0" HorizontalOptions="StartAndExpand" 
-                                  x:Name="GridTitle"  HeightRequest="65" >
-
-
-
-
-                        </Grid>
-                    </Frame>
-
-                    <ScrollView  Grid.Row="1"  
-                                            Margin="0" Padding="0,0,0,5"
-                                            x:Name="Scrolldata" >
-
-                        <StackLayout Padding="0" Margin="0" Spacing="1">
-                            <Grid Margin="0" Padding="0" x:Name="GridData" ColumnSpacing="1" RowSpacing="1" 
-                                      HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Black"
-                                      RowDefinitions="*">
-
-
-
-                            </Grid>
-
-                        </StackLayout>
-
-                    </ScrollView>
-                </Grid>
-            </ScrollView>
-        </Grid>
-      
-        
-        <ScrollView Orientation="Horizontal" Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center">
-
-            <StackLayout Orientation="Horizontal"  x:Name="stk_pages" VerticalOptions="Center" HorizontalOptions="Center">
-                <Label Text="Pages:" VerticalTextAlignment="Center"/>
-            </StackLayout>
-        </ScrollView>
     </Grid>
 </ContentPage>

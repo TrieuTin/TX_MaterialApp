@@ -478,10 +478,14 @@ namespace MaterialTracking.Views
 						, BackgroundColor = Class.Style.ColdKidsSky.BlueSea
 
 						, AutomationId = string.Format("{0}_{1}_{2}_{3}",
-						DB.StoreLocal.Instant.Barcode, 
-						(this.BindingContext as Model_AutocuttingView_LYV).BWBH,
-						(this.BindingContext as Model_AutocuttingView_LYV).CLBH, 
-						listData_TSL[i].Batch)
+
+							DB.StoreLocal.Instant.Barcode, 
+
+							(this.BindingContext as Model_AutocuttingView_LYV).BWBH,
+
+							(this.BindingContext as Model_AutocuttingView_LYV).CLBH, 
+
+							listData_TSL[i].Batch)
 						, HorizontalOptions = LayoutOptions.Center
 					};
 
@@ -504,14 +508,16 @@ namespace MaterialTracking.Views
                         foreach (var toolInput in lst_Tools)
                         {
 							var a = (toolInput.BindingContext as InputViewModel2);
+							var zl = a.zlbh;
 							if(a.tua ==btnSave_tua && a.bwbh == btnSave_bwbh && a.clbh == btnSave_clbh && !a.IsFul && a.Qtyed > 0)
                             {
+
 								isdone = a.SaveLocal();
 
+								var ddd = DB.DataLocal.Table.All_Local_LYV();
 							}
 							
                         }
-
 						if (isdone)
 						{
 
@@ -685,13 +691,7 @@ namespace MaterialTracking.Views
 
 							g_left.Children.Add(ButtonSave_local, 1, g_right.RowDefinitions.Count - 1);
 						}
-					}
-
-
-
-					
-
-					
+					}										
 
 				}
 				
@@ -1026,16 +1026,22 @@ namespace MaterialTracking.Views
 
 				for (int i = 1; i <= maxTua; i++)
 				{
+					var tuaName = data.Where(r => r.Pages == i).ToList();
+
 
 					var btn_page = new Button
 					{
-						Text = i.ToString(),
+						Text = tuaName[0].Batch.ToString(),
+
+						AutomationId = i.ToString(),
 
 						CornerRadius = 20,
 
-						TextColor =i==1? Class.Style.ColdKidsSky.BlueSea : Color.Gray
+						FontSize =20,
 
-						,BackgroundColor = Color.Transparent
+						TextColor =i==1? Class.Style.ColdKidsSky.BlueSea : Color.Gray,
+
+						BackgroundColor = Color.Transparent
 					};
 					btn_page.Clicked += (sender, e) =>
 					{
@@ -1048,8 +1054,8 @@ namespace MaterialTracking.Views
                             }
                         }
 						btn.TextColor = Class.Style.ColdKidsSky.BlueSea;
-						Data_left(int.Parse(btn.Text));
-						currentPage = int.Parse(btn.Text);
+						Data_left(int.Parse(btn.AutomationId));
+						currentPage = int.Parse(btn.AutomationId);
 					};
 
 					stk_pages.Children.Add(btn_page);
@@ -2015,7 +2021,7 @@ GROUP BY cbs.barcode,
 			if (ta.Rows.Count > 0)
 			{
 
-				var tua = 1;
+				var tua = 0;
 				string seq = "";
 				int countTua = 0;
 
@@ -2032,28 +2038,35 @@ GROUP BY cbs.barcode,
 
 							case "SEQ":
 
-								model.Batch =ta.Rows[i][ColumnName].ToString();
+								model.Batch = ta.Rows[i][ColumnName].ToString();
 
 								var seqTa = ta.Rows[i][ColumnName].ToString();
-
+								var a = l;
 								if (seq != seqTa)
 								{
-									countTua++;
-									seq = ta.Rows[i][ColumnName].ToString();
-									if (countTua <= 3)
-									{
-										
-										model.Pages = tua;
-                                    }
-                                    else
-                                    {
-										
-										tua++;
+									//countTua++;
 
-										model.Pages = tua;
+									//seq = seqTa;
 
-										countTua = 1;
-									}
+									//if (countTua <= 1)
+									//{
+
+									//	model.Pages = tua;
+									//                           }
+									//                           else
+									//                           {
+
+									//	tua++;
+
+									//	model.Pages = tua;
+
+									//	countTua = 0;
+									//}
+
+									seq = seqTa;
+
+									tua++;
+									model.Pages = tua;
 								}
 								else model.Pages = tua;
                                
