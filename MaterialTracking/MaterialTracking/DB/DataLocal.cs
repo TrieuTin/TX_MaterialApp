@@ -709,6 +709,7 @@ order by ZLBH";
                                 ,[USERDATE]
                                 ,[YN]
                                 ,[Times]
+                               
                                 )
                            VALUES
                                (@prono
@@ -717,8 +718,10 @@ order by ZLBH";
                                , @uSERID
                                , getdate()
                                , 1
-                               , @times)";
-            DB.SQL.ConnectDB.Connection.Update_Parameter(sqlInsert, new string[] { Row.Prono, Row.XXCC, Row.Qty.ToString(), Row.UserID, times.ToString() });
+                               , @times
+                               )";
+            
+            DB.SQL.ConnectDB.Connection.Update_Parameter(sqlInsert, new string[] { Row.Prono, Row.XXCC, Row.Qty.ToString(), Row.UserID, times.ToString()});
 
         }
 

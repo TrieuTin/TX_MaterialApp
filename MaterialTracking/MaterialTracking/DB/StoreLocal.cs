@@ -41,7 +41,8 @@ namespace MaterialTracking.DB
         
         private List<InventoryPageGeneral_Type> _data_warehouse_general;
 
-
+        //Chi su dung cho nha may LYV
+        private string _machine = "";
 
         private Departments _depname;
         
@@ -153,7 +154,7 @@ namespace MaterialTracking.DB
             }
         }
 
-        
+        public string Machine { get => _machine; set => _machine = value; } //Only use for LYV Fac
     }
     public enum MyFactory
     {

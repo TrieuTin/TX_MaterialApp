@@ -21,8 +21,7 @@ namespace Services
         }
         public static async Task<string> MsgAction(string Title, string[] Btn_list, string button1 = "CANCEL")
         {
-           
-
+          
             var ac = await Application.Current.MainPage.DisplayActionSheet(Title, button1,null, Btn_list);
             return ac;
         }

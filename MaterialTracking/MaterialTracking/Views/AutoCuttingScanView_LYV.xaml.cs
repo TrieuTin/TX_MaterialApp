@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using kolor = MaterialTracking.Class.Style;
 namespace MaterialTracking.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -38,7 +38,7 @@ namespace MaterialTracking.Views
 
 			vm.GetData_MainTitle();
 			
-			this.BindingContext = vm;			
+			this.BindingContext = vm;
 
 			data = vm.Data().ListData;
 
@@ -313,7 +313,7 @@ namespace MaterialTracking.Views
 
 		}
 		
-		void Data_left(int page)
+		void  Data_left(int page)
         {
 			if(Grd_DataLeft.Children.Count > 0)
 				foreach (View childView in Grd_DataLeft.Children.ToList())            
@@ -662,22 +662,47 @@ namespace MaterialTracking.Views
 
 								var btnInfo = new Button
 								{
-									Text = "Sum",
+									Text = string.IsNullOrEmpty( DB.StoreLocal.Instant.Machine)? "Chọn máy cắt" : DB.StoreLocal.Instant.Machine,
 									Margin= new Thickness(-5)
-									,BackgroundColor = Class.Style.Primary
+									,BackgroundColor = Class.Style.Primary,
+									
 
 								};
-								btnInfo.Clicked += (s, e) =>
-								{
-									var t = list_TSL[0].Total;
-									var u = list_TSL[0].Usage;
 
-									var info_total = string.Format("Batch: {0} Total: {1}/{2} Usage: {3}", lbl_Batch.Text, ThisContext.SumDid(lbl_Batch.Text), t, u);
+                                btnInfo.Clicked += async (s, e) =>
+                                {
+									//var t = list_TSL[0].Total;
+									//var u = list_TSL[0].Usage;
 
-									Services.DisplayToast.Show.Toast(info_total, Class.Style.Notification);
+									//var info_total = string.Format("Batch: {0} Total: {1}/{2} Usage: {3}", lbl_Batch.Text, ThisContext.SumDid(lbl_Batch.Text), t, u);
+
+									//Services.DisplayToast.Show.Toast(info_total, Class.Style.Notification);
+
+									var listmachine = vm.ListMachine;
+
+									List<Button> bnts = new List<Button>();
+
+                                    foreach (var item in listmachine)
+                                    {
+										bnts.Add(new Button
+										{
+											Text = item.machineName,
+											
+										});
+									}
+
+									var selectmachine = await Services.Alert.PopupMenu("Chọn máy cắt", bnts, kolor.Notification);
+
+                                    if (!string.IsNullOrEmpty(selectmachine))
+                                    {
+										DB.StoreLocal.Instant.Machine = listmachine.Where(r=>r.machineName == selectmachine).ToList()[0].machineID;
+
+										btnInfo.Text = selectmachine;
+                                    }
+
 								};
 
-								g_right.Children.Add(btnInfo, 0, g_right.RowDefinitions.Count - 1);
+                                g_right.Children.Add(btnInfo, 0, g_right.RowDefinitions.Count - 1);
 
 								Grid.SetColumnSpan(btnInfo, g_right.ColumnDefinitions.Count);
 							}
@@ -1122,6 +1147,7 @@ namespace MaterialTracking.Views
 		ICommand _cmdConfirm;
 
 		private bool _isGridHide = true;
+		private List<(string machineID, string machineName)> listMachine;
 		public string DMQty{ get; set; }
 		public string SumAndTua { get; set; }
 		private GridLength _rowHeight = new GridLength(200);
@@ -1130,6 +1156,7 @@ namespace MaterialTracking.Views
 		public Model_AutocuttingView_LYV()
         {
 			BarCode = DB.StoreLocal.Instant.Barcode;
+			Get_Machines();
 			Cmd_Collapsed = new Command(CollapseRunTime);
 			CmdConfirm = new Command(Confirm);
 		}
@@ -1309,7 +1336,8 @@ SET
                                 ,[USERID]
                                 ,[USERDATE]
                                 ,[YN]
-                                ,[Times]
+                                ,[Times],
+								[Machineid]
                                 )
                            VALUES
                                (@prono
@@ -1318,8 +1346,10 @@ SET
                                , @uSERID
                                , getdate()
                                , 1
-                               , @times)";
-			return DB.SQL.ConnectDB.Connection.Update_Parameter(sqlInsert, new string[] { Row.Prono, Row.XXCC, Row.Qty.ToString(), Row.UserID, times.ToString() });
+                               , @times,
+								@machine)";
+
+			return DB.SQL.ConnectDB.Connection.Update_Parameter(sqlInsert, new string[] { Row.Prono, Row.XXCC, Row.Qty.ToString(), Row.UserID, times.ToString(),DB.StoreLocal.Instant.Machine });
 
 		}
 
@@ -1335,7 +1365,36 @@ SET
 
         public bool IsGridHide { get => _isGridHide; set { _isGridHide = value; OnPropertyChanged("IsGridHide"); } }
 
-		public string SumAllBarcode()
+        public List<(string machineID, string machineName)> ListMachine { get => listMachine; set => listMachine = value; }
+
+
+		private void Get_Machines()
+        {
+			string sql = "SELECT MachineID, MachineName FROM Cutting_Machine";
+
+			var ta = DB.SQL.ConnectDB.Connection.FillDataTable(sql);
+
+			(string mID, string mNm) machine;
+			machine.mID = "";
+			machine.mNm = "";
+
+			if(ta.Rows.Count > 0)
+            {
+				listMachine = new List<(string machineID, string machineName)>();
+
+                foreach (System.Data.DataRow item in ta.Rows)
+                {
+					machine.mID = item["MachineID"].ToString();
+					machine.mNm = item["MachineName"].ToString();
+
+					listMachine.Add(machine);
+                }
+            }
+
+		}
+
+
+        public string SumAllBarcode()
         {
 			string sql = $"SELECT convert(int,sum(actualQty)) s FROM App_Cutting_Barcodes_Groups_Edit where Barcode = '{DB.StoreLocal.Instant.Barcode}' ";
 
