@@ -127,7 +127,7 @@ namespace MaterialTracking.Views
            // _barcode = DB.StoreLocal.Instant.Barcode;
 
             
-            classModel = new AutoCuttingModel(DB.StoreLocal.Instant.Barcode, listRy);
+            classModel = new AutoCuttingModel( listRy);
 
             BindingContext = classModel;
 
@@ -516,15 +516,18 @@ namespace MaterialTracking.Views
 
                 GridRY.HorizontalOptions = LayoutOptions.FillAndExpand;
                 //TUA
-                if(ddbh != zlbh)
+               
+                if (ddbh != zlbh)
                 {
+                    if (string.IsNullOrEmpty(zlbh))
+                    {
+                        return;
+                    }
                     var rowRY = new RowDefinition
                     {
                         Height = new GridLength(1, GridUnitType.Auto)
                     };
-                    GridRY.RowDefinitions.Add(rowRY);
-
-
+                    GridRY.RowDefinitions.Add(rowRY);                    
 
                     var lbl1 = new Label
                     {
@@ -1293,9 +1296,9 @@ namespace MaterialTracking.Views
 
     public class AutoCuttingModel :BaseViewModel
     {
-        public AutoCuttingModel(string Barcode, List<string> RYs)
+        public AutoCuttingModel(List<string> RYs)
         {
-            _barcode = Barcode;
+           
             //_ry = ry;
             _lstRY = RYs;
 
@@ -1318,7 +1321,7 @@ namespace MaterialTracking.Views
 
             else RowHeight = new GridLength(0);
         }
-        string _barcode = "";
+        string _barcode = DB.StoreLocal.Instant.Barcode;
 
         public string BarCode { get; set; }
         public string Xieming { get; set; }

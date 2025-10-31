@@ -1551,9 +1551,43 @@ where o.OrderId not in (SELECT  d.orderid FROM App_Material_process d)";
 
                     try
                     {
+
                         if (!Network.Net.HasNet) { Services.DisplayToast.Show.Toast("Không có mạng", kolor.Error); return; }
 
-                        DB.StoreLocal.Instant.Barcode = Barcode.Result = code;
+                        var yearCurrent = DateTime.Now.Year;
+                        var monthCurrent = DateTime.Now.Month.ToString("00");
+                        var codeCurrent = "";
+
+                      
+
+                        if (code.Length <= 5)
+                        {
+                            var numZero = 5 - code.Length;
+                            var temp = "";
+
+                            if (numZero > 0)
+                            {
+                                for (int i = 0; i < numZero; i++)
+                                {
+                                    temp += "0";
+                                }
+                            }
+                            codeCurrent += yearCurrent + monthCurrent + temp + code;
+                        } 
+
+                        if(code.Length == 7)
+                        {
+                            codeCurrent += yearCurrent + code;
+                        }
+                        if(code.Length == 9)
+                        {
+                            codeCurrent += yearCurrent .ToString().Substring(0,2) + code;
+                        }
+                        if(code.Length ==11)
+                            codeCurrent = code;
+                            
+
+                        DB.StoreLocal.Instant.Barcode = Barcode.Result = codeCurrent;
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -1581,7 +1615,7 @@ where o.OrderId not in (SELECT  d.orderid FROM App_Material_process d)";
 
         private async void ScanBarcode()
         {            
-            if (DB.StoreLocal.Instant.Depname == Departments.AutoCutting || DB.StoreLocal.Instant.Depname == Departments.Lazer)
+            if (DB.StoreLocal.Instant.Depname == Departments.AutoCutting || DB.StoreLocal.Instant.Depname == Departments.Lazer || DB.StoreLocal.Instant.Myfac == MyFactory.LYV)
             {
                 try
                 {

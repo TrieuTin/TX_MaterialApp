@@ -34,6 +34,7 @@ namespace MaterialTracking.Popups
 
         private void txtSearch_Completed(object sender, EventArgs e)
         {            
+
             this.Dismiss(txtSearch.Text);
         }
        
@@ -53,7 +54,7 @@ namespace MaterialTracking.Popups
         public ICommand TapCommand{get;}
         
         public string Holder { get => ConvertLang.Convert.Translate_LYM("Nhập mã", "ဝင်ပါ။"); }
-        private async void OnTapped(object obj)
+        private void OnTapped(object obj)
         {
             var b = obj as Button;
           
